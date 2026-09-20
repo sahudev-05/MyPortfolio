@@ -1,6 +1,14 @@
-# Backup videos
-assets/videos/*backup*
-assets/videos/*raw*
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
 
 # OS / Editor
 .DS_Store
@@ -8,3 +16,7 @@ Thumbs.db
 *.log
 .vscode/
 .idea/
+
+# Backup videos
+assets/videos/*backup*
+assets/videos/*raw*
