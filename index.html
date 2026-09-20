@@ -2055,8 +2055,9 @@
 
       <!-- Right: Form -->
       <div class="reveal">
-        <div class="contact__form-card">
-          <div class="contact__form-title">Send a Message</div>
+        <div class="contact__form-card" id="contactCard">
+          <canvas id="contactConfettiCanvas" class="contact-confetti-canvas"></canvas>
+          <div class="contact__form-title" id="contactFormTitle">Send a Message</div>
           <form id="contactForm" novalidate autocomplete="off">
             <div class="form-row">
               <div class="form-group">
@@ -2077,9 +2078,33 @@
               <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
             </div>
             <button type="submit" id="submitBtn">
-              <i class="fas fa-paper-plane"></i> Send Message
+              <i class="fas fa-paper-plane" id="submitBtnIcon"></i> <span id="submitBtnText">Send Message</span>
             </button>
           </form>
+
+          <!-- Holographic Success Animation State (Reveals when message sent) -->
+          <div class="contact__success-state" id="contactSuccessState" style="display:none;" aria-live="polite">
+            <div class="success-orb-wrap">
+              <div class="success-orb-pulse"></div>
+              <div class="success-orb-ring"></div>
+              <div class="success-orb-icon">
+                <i class="fas fa-paper-plane success-fly-icon"></i>
+                <i class="fas fa-check success-check-icon"></i>
+              </div>
+            </div>
+            <div class="success-title">Message Transmitted!</div>
+            <p class="success-desc">
+              Thank you, <strong id="successSenderName">there</strong>! Your message has been encrypted and dispatched directly to Deevyanshu's personal inbox.
+            </p>
+            <div class="success-meta-row">
+              <div class="success-meta-item"><i class="fas fa-shield-alt"></i> EmailJS Verified</div>
+              <div class="success-meta-item"><i class="fas fa-bolt"></i> Direct Dispatch</div>
+              <div class="success-meta-item"><i class="fas fa-clock"></i> Reply ETA: &lt; 24h</div>
+            </div>
+            <button type="button" class="btn btn--outline btn--sm" id="sendAnotherBtn">
+              <i class="fas fa-reply"></i> Send Another Message
+            </button>
+          </div>
         </div>
       </div>
     </div>
