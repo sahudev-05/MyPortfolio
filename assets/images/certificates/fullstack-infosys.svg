@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030814"/>
+      <stop offset="50%" stop-color="#0a1329"/>
+      <stop offset="100%" stop-color="#020510"/>
+    </linearGradient>
+    <linearGradient id="goldGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#00ff9d"/>
+    </linearGradient>
+    <linearGradient id="borderGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#00ff9d" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#bgGrad5)" rx="16"/>
+  <rect x="24" y="24" width="852" height="552" fill="none" stroke="url(#borderGrad5)" stroke-width="2" rx="10"/>
+  <rect x="34" y="34" width="832" height="532" fill="none" stroke="#38bdf8" stroke-opacity="0.15" stroke-dasharray="6,4" rx="8"/>
+
+  <g transform="translate(450, 110)">
+    <circle r="42" fill="#0c1836" stroke="#38bdf8" stroke-width="2"/>
+    <circle r="36" fill="none" stroke="#00ff9d" stroke-width="1" stroke-dasharray="3,2"/>
+    <!-- Stack Layer Icon -->
+    <path d="M -14 -4 L 0 -12 L 14 -4 L 0 4 Z" fill="none" stroke="url(#goldGrad5)" stroke-width="2"/>
+    <path d="M -14 3 L 0 11 L 14 3" fill="none" stroke="url(#goldGrad5)" stroke-width="2"/>
+    <path d="M -14 10 L 0 18 L 14 10" fill="none" stroke="url(#goldGrad5)" stroke-width="2"/>
+  </g>
+
+  <text x="450" y="195" font-family="'Fira Code', monospace" font-size="14" letter-spacing="4" fill="#38bdf8" text-anchor="middle" text-transform="uppercase">Springboard Certificate of Competency</text>
+  <text x="450" y="235" font-family="'Inter', sans-serif" font-size="15" fill="#8494ab" text-anchor="middle">This is to certify that</text>
+  <text x="450" y="285" font-family="'Playfair Display', serif" font-size="34" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="1">Deevyanshu Sahu</text>
+  <line x1="280" y1="305" x2="620" y2="305" stroke="url(#goldGrad5)" stroke-width="1.5"/>
+
+  <text x="450" y="340" font-family="'Inter', sans-serif" font-size="15" fill="#8494ab" text-anchor="middle">has successfully completed the comprehensive training program in modern web stacks for</text>
+  <text x="450" y="385" font-family="'Inter', sans-serif" font-size="24" font-weight="700" fill="#00f0ff" text-anchor="middle">Learning Full Stack Development</text>
+  <text x="450" y="420" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#a5f3fc" text-anchor="middle">Infosys Springboard Program</text>
+
+  <g transform="translate(160, 490)">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#334155" stroke-width="1"/>
+    <text x="80" y="18" font-family="'Inter', sans-serif" font-size="12" fill="#8494ab" text-anchor="middle">Date of Issue: Jan 2025</text>
+  </g>
+  <g transform="translate(450, 490)">
+    <polygon points="0,-18 16,-6 16,12 0,22 -16,12 -16,-6" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+    <circle r="4" fill="#38bdf8"/>
+    <text x="0" y="38" font-family="'Fira Code', monospace" font-size="10" fill="#38bdf8" text-anchor="middle" letter-spacing="1">PROFESSIONAL BADGE</text>
+  </g>
+  <g transform="translate(580, 490)">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#334155" stroke-width="1"/>
+    <text x="80" y="18" font-family="'Inter', sans-serif" font-size="12" fill="#8494ab" text-anchor="middle">Infosys Springboard Team</text>
+  </g>
+</svg>

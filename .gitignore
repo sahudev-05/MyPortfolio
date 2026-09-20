@@ -1,0 +1,10 @@
+# Backup videos
+assets/videos/*backup*
+assets/videos/*raw*
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050817"/>
+      <stop offset="50%" stop-color="#0c1630"/>
+      <stop offset="100%" stop-color="#030612"/>
+    </linearGradient>
+    <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="50%" stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#00ff9d"/>
+    </linearGradient>
+    <linearGradient id="borderGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.8"/>
+    </linearGradient>
+    <filter id="glow2" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#bgGrad2)" rx="16"/>
+  <rect x="24" y="24" width="852" height="552" fill="none" stroke="url(#borderGrad2)" stroke-width="2" rx="10"/>
+  <rect x="34" y="34" width="832" height="532" fill="none" stroke="#818cf8" stroke-opacity="0.15" stroke-dasharray="6,4" rx="8"/>
+
+  <g transform="translate(450, 110)">
+    <circle r="42" fill="#0d1b3a" stroke="#818cf8" stroke-width="2" filter="url(#glow2)"/>
+    <circle r="36" fill="none" stroke="#00f0ff" stroke-width="1" stroke-dasharray="3,2"/>
+    <!-- AI Brain / Robot Node Icon -->
+    <circle cx="0" cy="-6" r="10" fill="none" stroke="url(#goldGrad2)" stroke-width="2"/>
+    <path d="M -12 12 L 12 12 M -6 4 L -10 12 M 6 4 L 10 12" stroke="url(#goldGrad2)" stroke-width="2"/>
+    <circle cx="-10" cy="12" r="3" fill="#00ff9d"/>
+    <circle cx="10" cy="12" r="3" fill="#00ff9d"/>
+  </g>
+
+  <text x="450" y="195" font-family="'Fira Code', monospace" font-size="14" letter-spacing="4" fill="#818cf8" text-anchor="middle" text-transform="uppercase">Coursera Verified Certificate</text>
+  <text x="450" y="235" font-family="'Inter', sans-serif" font-size="15" fill="#8494ab" text-anchor="middle">This is to certify that</text>
+  <text x="450" y="285" font-family="'Playfair Display', serif" font-size="34" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="1">Deevyanshu Sahu</text>
+  <line x1="280" y1="305" x2="620" y2="305" stroke="url(#goldGrad2)" stroke-width="1.5"/>
+
+  <text x="450" y="340" font-family="'Inter', sans-serif" font-size="15" fill="#8494ab" text-anchor="middle">has successfully completed an online non-credit course authorized by Vanderbilt University</text>
+  <text x="450" y="385" font-family="'Inter', sans-serif" font-size="24" font-weight="700" fill="#00f0ff" text-anchor="middle">Prompt Engineering for ChatGPT</text>
+  <text x="450" y="420" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#a5f3fc" text-anchor="middle">Vanderbilt University — Coursera</text>
+
+  <g transform="translate(160, 490)">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#334155" stroke-width="1"/>
+    <text x="80" y="18" font-family="'Inter', sans-serif" font-size="12" fill="#8494ab" text-anchor="middle">Date of Issue: Nov 2025</text>
+  </g>
+  <g transform="translate(450, 490)">
+    <polygon points="0,-18 16,-6 16,12 0,22 -16,12 -16,-6" fill="none" stroke="#818cf8" stroke-width="1.5"/>
+    <circle r="4" fill="#818cf8"/>
+    <text x="0" y="38" font-family="'Fira Code', monospace" font-size="10" fill="#818cf8" text-anchor="middle" letter-spacing="1">AUTHENTIC CERTIFICATE</text>
+  </g>
+  <g transform="translate(580, 490)">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#334155" stroke-width="1"/>
+    <text x="80" y="18" font-family="'Inter', sans-serif" font-size="12" fill="#8494ab" text-anchor="middle">Coursera Credentials</text>
+  </g>
+</svg>

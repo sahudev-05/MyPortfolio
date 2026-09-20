@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deevyanshu Sahu — Portfolio</title>
+  <meta name="description" content="Portfolio of Deevyanshu Sahu — AI/ML Developer, Full-Stack Engineer & IoT Builder. BCA at CHRIST University, Bengaluru." />
+  <meta name="author" content="Deevyanshu Sahu" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0a0f'/><text x='50' y='68' font-size='52' font-weight='bold' font-family='Arial,sans-serif' fill='%2300f0ff' text-anchor='middle'>DS</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@700;900&family=Comfortaa:wght@700&family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Major+Mono+Display&family=Monoton&family=Orbitron:wght@700;900&family=Pacifico&family=Playfair+Display:ital,wght@0,700;1,700&family=Press+Start+2P&family=Righteous&family=Rubik+Glitch&family=Space+Grotesk:wght@700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ── LOADING ─────────────────────────────────────────────── -->
+<div id="loading-screen" aria-hidden="true">
+  <div class="loader__monogram">DS</div>
+  <div class="loader__line-wrap"><div class="loader__line"></div></div>
+  <div class="loader__text">Loading Portfolio</div>
+</div>
+
+<!-- ── CURSOR ──────────────────────────────────────────────── -->
+<div id="cursor" aria-hidden="true"></div>
+<div id="cursor-follower" aria-hidden="true"></div>
+
+<!-- ── TOAST ───────────────────────────────────────────────── -->
+<div id="toast" role="alert" aria-live="polite"></div>
+
+<!-- ── BACK TO TOP ─────────────────────────────────────────── -->
+<button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- ════════════════════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <a href="#hero" class="nav__logo" aria-label="Home">DS</a>
+
+    <ul class="nav__links" id="navMenu" role="list">
+      <li><a href="#about"        class="nav__link" data-section="about">About</a></li>
+      <li><a href="#skills"       class="nav__link" data-section="skills">Skills</a></li>
+      <li><a href="#projects"     class="nav__link" data-section="projects">Projects</a></li>
+      <li><a href="#team"         class="nav__link" data-section="team">Team Projects</a></li>
+      <li><a href="#experience"   class="nav__link" data-section="experience">Experience</a></li>
+      <li><a href="#education"    class="nav__link" data-section="education">Education</a></li>
+      <li><a href="#achievements" class="nav__link" data-section="achievements">Achievements</a></li>
+      <li><a href="#game"         class="nav__link" data-section="game">🎮 Game</a></li>
+      <li>
+        <a href="#contact" class="btn btn--gold btn--sm nav__cta" id="contactNavBtn">
+          <i class="fas fa-paper-plane"></i> Contact
+        </a>
+      </li>
+    </ul>
+
+    <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
+<section id="hero" aria-label="Introduction">
+  <!-- Three.js fills right half -->
+  <canvas id="hero-3d-canvas" aria-hidden="true"></canvas>
+
+  <!-- LEFT: Content -->
+  <div class="container" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;align-items:center;">
+    <div class="hero__content">
+      <div class="hero__eyebrow">
+        <span class="hero__eyebrow-line"></span>
+        Hello, World
+      </div>
+
+      <h1 class="hero__name">
+        <span>Deevyanshu</span>
+        <span class="hero__name-gold">Sahu</span>
+      </h1>
+
+      <div class="hero__role-bar">
+        <span class="hero__role-label">I build</span>
+        <span class="hero__role-divider"></span>
+        <span id="typewriter"></span>
+      </div>
+
+      <p class="hero__desc">
+        Final-year BCA student at <strong>CHRIST University, Bengaluru</strong> &amp; UK Exchange Scholar at <strong>Edge Hill University</strong>. Architecting full-stack web platforms, offline-first <strong>Flutter applications</strong>, multilingual <strong>NLP models</strong>, and <strong>embedded IoT systems</strong>.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#projects" class="btn btn--gold" id="heroViewBtn">
+          <i class="fas fa-rocket"></i> View Work
+        </a>
+        <a href="#contact" class="btn btn--outline" id="heroContactBtn">
+          <i class="fas fa-envelope"></i> Get in Touch
+        </a>
+      </div>
+
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <div class="hero__stat-num"><span data-count="8">0</span>+</div>
+          <div class="hero__stat-label">Projects Built</div>
+        </div>
+        <div class="hero__stat">
+          <div class="hero__stat-num"><span data-count="21">0</span></div>
+          <div class="hero__stat-label">Languages (NLP)</div>
+        </div>
+        <div class="hero__stat">
+          <div class="hero__stat-num"><span data-count="95">0</span>%</div>
+          <div class="hero__stat-label">Model F1-Score</div>
+        </div>
+        <div class="hero__stat">
+          <div class="hero__stat-num"><span data-count="8">0</span></div>
+          <div class="hero__stat-label">Certifications</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: floating badges over the 3D canvas -->
+    <div class="hero__3d-side" style="position:relative;height:100vh;">
+      <div class="hero__badge hero__badge--1">
+        <i class="fas fa-brain"></i> AI / ML Engineer
+      </div>
+      <div class="hero__badge hero__badge--2">
+        <i class="fas fa-mobile-alt"></i> Flutter &amp; Full-Stack
+      </div>
+      <div class="hero__badge hero__badge--3">
+        <i class="fas fa-microchip"></i> Embedded IoT Builder
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-indicator__mouse">
+      <div class="scroll-indicator__wheel"></div>
+    </div>
+    <span class="scroll-indicator__text">Scroll</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════════════════════════ -->
+<section id="about" class="section section--alt" aria-label="About me">
+  <span class="section__number" aria-hidden="true">01</span>
+  <div class="container">
+    <div class="section__header">
+      <div class="section__label">Who I Am</div>
+      <h2 class="section__title">About <em>Me</em></h2>
+    </div>
+
+    <div class="about__grid">
+      <!-- Visual (3D Holographic Character Cutout) -->
+      <div class="about__visual reveal from-left">
+        <div class="about__cutout-wrap" id="aboutCutoutWrap">
+          <div class="about__cyber-halo" aria-hidden="true"></div>
+          <div class="about__cutout-pedestal" aria-hidden="true"></div>
+          <img src="assets/images/avatar.png" alt="Deevyanshu Sahu — 3D Holographic Cutout" class="about__cutout-img" id="aboutCutoutImg" />
+          
+          <!-- Floating 3D Frosted Glass Badges with Z-Depth -->
+          <div class="about-3d-badge about-3d-badge--top-right">
+            <i class="fas fa-bolt"></i> Full-Stack &amp; Flutter Architect
+          </div>
+          <div class="about-3d-badge about-3d-badge--top-left about-3d-badge--gold">
+            <i class="fas fa-brain"></i> Multilingual NLP &amp; AI
+          </div>
+          <div class="about-3d-badge about-3d-badge--bottom-left">
+            <i class="fas fa-microchip"></i> Embedded IoT (ESP32)
+          </div>
+          <div class="about-3d-badge about-3d-badge--bottom-right about-3d-badge--gold">
+            <i class="fas fa-graduation-cap"></i> CHRIST &amp; Edge Hill UK
+          </div>
+
+          <div class="about__glare" id="aboutGlare" aria-hidden="true"></div>
+        </div>
+        <div class="about__big-num" aria-hidden="true">2027</div>
+        <div class="about__tag">Final-Year BCA</div>
+      </div>
+
+      <!-- Text -->
+      <div class="about__text reveal">
+        <p>
+          I'm <strong>Deevyanshu Sahu</strong>, a final-year Bachelor of Computer Applications student at
+          <strong>CHRIST (Deemed to be University)</strong>, Bengaluru, and UK Exchange Scholar at <strong>Edge Hill University</strong>. I engineer high-performance systems bridging mobile applications, artificial intelligence, and embedded hardware.
+        </p>
+        <p>
+          My portfolio includes <strong>Acadly</strong> (an offline-first academic management Flutter app with Riverpod &amp; Drift SQLite), <strong>JewelStreet</strong> (a luxury full-stack e-commerce engine with HMAC payment verification), <strong>Multilingual Smishing Detection</strong> (analyzing 21 languages with 94.89% accuracy), <strong>LegalSaathi</strong> (a women's legal rights LangChain RAG chatbot), <strong>Department Resource &amp; Management System</strong> (a modular Flask &amp; PyJWT administrative portal), and <strong>VisionSense AI</strong> (an assistive smart cane integrating ESP32, ultrasonic arrays &amp; Gemini AI).
+        </p>
+        <p>
+          Beyond engineering, I lead tech automation initiatives at CAPS Tech Center (saving 7+ hrs/week), coordinate events at E-Cell CHRIST, and actively advocate for UN Sustainable Development Goals (SDGs).
+        </p>
+
+        <div class="gold-line"></div>
+
+        <div class="about__chips">
+          <div class="chip"><i class="fas fa-map-marker-alt"></i> Bengaluru, India</div>
+          <div class="chip"><i class="fas fa-graduation-cap"></i> BCA @ CHRIST Univ.</div>
+          <div class="chip"><i class="fas fa-plane"></i> UK Exchange (Edge Hill)</div>
+          <div class="chip"><i class="fas fa-mobile-alt"></i> Flutter &amp; Mobile Architect</div>
+          <div class="chip"><i class="fas fa-brain"></i> AI / NLP Researcher</div>
+          <div class="chip"><i class="fas fa-microchip"></i> Embedded IoT Builder</div>
+          <div class="chip"><i class="fas fa-users"></i> E-Cell &amp; CAPS Tech</div>
+          <div class="chip"><i class="fas fa-language"></i> EN · HI · KN · FR</div>
+        </div>
+
+        <div class="about__actions">
+          <a href="#contact" class="btn btn--gold" id="aboutContactBtn">
+            <i class="fas fa-envelope"></i> Get in Touch
+          </a>
+          <a href="https://linkedin.com/in/deevyanshu-sahu" target="_blank" rel="noopener"
+             class="btn btn--outline" id="aboutLinkedinBtn">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com/sahudev06" target="_blank" rel="noopener"
+             class="btn btn--ghost" id="aboutGithubBtn">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SKILLS
+════════════════════════════════════════════════════════════ -->
+<section id="skills" class="section" aria-label="Skills">
+  <span class="section__number" aria-hidden="true">02</span>
+  <div class="container">
+    <div class="section__header reveal">
+      <div class="section__label">What I Use</div>
+      <h2 class="section__title">Technical <em>Skills</em></h2>
+      <p class="section__subtitle">From AI research to embedded hardware — my full-stack toolkit.</p>
+    </div>
+
+    <div class="skills__cards">
+
+      <div class="skill-card reveal" data-delay="1">
+        <div class="skill-card__icon"><i class="fas fa-code"></i></div>
+        <div class="skill-card__title">Languages</div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>Python</span><span>92%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="92%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>Dart (Flutter 3)</span><span>88%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="88%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>JavaScript / TS</span><span>84%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="84%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>C++ / Embedded</span><span>78%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="78%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>SQL / SQLite</span><span>82%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="82%"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" data-delay="2">
+        <div class="skill-card__icon"><i class="fas fa-mobile-alt"></i></div>
+        <div class="skill-card__title">Mobile &amp; Offline-First</div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>Flutter 3.x / Dart</span><span>88%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="88%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>Flutter Riverpod (v3)</span><span>85%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="85%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>Drift (Type-Safe SQLite)</span><span>82%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="82%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>Firebase Auth &amp; Firestore</span><span>80%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="80%"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" data-delay="3">
+        <div class="skill-card__icon"><i class="fas fa-brain"></i></div>
+        <div class="skill-card__title">AI / ML / NLP</div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>XLM-RoBERTa / NLP</span><span>86%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="86%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>XGBoost / SHAP Explainer</span><span>82%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="82%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>Computer Vision / YOLO</span><span>78%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="78%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>Gemini Multimodal API</span><span>80%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="80%"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" data-delay="4">
+        <div class="skill-card__icon"><i class="fas fa-layer-group"></i></div>
+        <div class="skill-card__title">Web &amp; Backend</div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>Node.js / Express</span><span>82%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="82%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>React.js</span><span>80%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>MongoDB / Mongoose</span><span>78%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="78%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>REST APIs / HMAC &amp; JWT</span><span>85%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="85%"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" data-delay="5">
+        <div class="skill-card__icon"><i class="fas fa-microchip"></i></div>
+        <div class="skill-card__title">IoT &amp; Embedded</div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>ESP32 &amp; ESP32-CAM</span><span>82%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="82%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>Ultrasonic Sensor Arrays</span><span>80%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>BLE Telemetry Pipeline</span><span>76%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="76%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__header"><span>AWS Cloud Foundations</span><span>74%</span></div>
+          <div class="skill-bar__track"><div class="skill-bar__fill" data-width="74%"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" data-delay="6">
+        <div class="skill-card__icon"><i class="fas fa-tools"></i></div>
+        <div class="skill-card__title">Tools &amp; DevOps</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git / GitHub</span>
+          <span class="skill-tag">Android Studio</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Postman</span>
+          <span class="skill-tag">Jupyter</span>
+          <span class="skill-tag">Google AppSheet</span>
+          <span class="skill-tag">Razorpay Webhooks</span>
+          <span class="skill-tag">HMAC-SHA256</span>
+          <span class="skill-tag">Arduino IDE</span>
+          <span class="skill-tag">Vercel &amp; Render</span>
+          <span class="skill-tag">Three.js / WebGL</span>
+          <span class="skill-tag">Agile / Scrum</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     PROJECTS
+════════════════════════════════════════════════════════════ -->
+<section id="projects" class="section section--alt" aria-label="Projects">
+  <span class="section__number" aria-hidden="true">03</span>
+  <div class="container">
+    <div class="section__header reveal">
+      <div class="section__label">What I've Built</div>
+      <h2 class="section__title">Featured <em>Projects</em></h2>
+      <p class="section__subtitle">Real-world applications — AI, IoT, and full-stack.</p>
+    </div>
+
+    <div class="projects__filter" role="group" aria-label="Project category filters">
+      <button class="filter-btn active" data-filter="all"     id="filterAll">All</button>
+      <button class="filter-btn"        data-filter="web"     id="filterWeb">Web / Full-Stack</button>
+      <button class="filter-btn"        data-filter="mobile"  id="filterMobile">Mobile / Flutter</button>
+      <button class="filter-btn"        data-filter="ai"      id="filterAI">AI / ML / NLP</button>
+    </div>
+
+    <div class="projects__grid">
+
+      <!-- PROJECT 1: JewelStreet -->
+      <article class="project-card reveal" data-category="web" id="projectJewelStreet">
+        <div class="project-card__media">
+          <div class="project-direct-preview">
+            <div class="direct-preview__bar">
+              <div class="direct-preview__dots">
+                <span class="direct-preview__dot direct-preview__dot--red"></span>
+                <span class="direct-preview__dot direct-preview__dot--yellow"></span>
+                <span class="direct-preview__dot direct-preview__dot--green"></span>
+              </div>
+              <a href="https://jewel-street.vercel.app/" target="_blank" rel="noopener" class="direct-preview__url" title="Open Deployed Site: https://jewel-street.vercel.app/">
+                <i class="fas fa-lock"></i> https://jewel-street.vercel.app/
+              </a>
+              <a href="https://jewel-street.vercel.app/" target="_blank" rel="noopener" class="direct-preview__external" title="Open in New Tab">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <div class="direct-preview__frame-wrap">
+              <iframe src="https://jewel-street.vercel.app/" title="JewelStreet Live Preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__header-row">
+            <div class="project-card__index" aria-hidden="true">01</div>
+            <div class="project-card__period">Sep 2026 — Present</div>
+            <a href="https://jewel-street.vercel.app/" target="_blank" rel="noopener" class="deployed-link-chip" title="Live Deployed Site">
+              <span class="sync-dot pulse-green"></span> <span>Deployed Live</span> <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          <h3 class="project-card__title">JewelStreet</h3>
+          <p class="project-card__desc">
+            Full-stack luxury jewellery e-commerce platform featuring 20+ RESTful API endpoints, server-side inventory reservation, transactional cart mechanics, and cryptographic payment verification.
+          </p>
+
+          <!-- Core Highlights -->
+          <div class="project-card__highlights">
+            <span class="highlight-chip"><i class="fas fa-server"></i> 20+ REST APIs</span>
+            <span class="highlight-chip"><i class="fas fa-user-shield"></i> 3-Tier RBAC</span>
+            <span class="highlight-chip"><i class="fas fa-shield-check"></i> HMAC-SHA256</span>
+            <span class="highlight-chip"><i class="fas fa-file-invoice"></i> PDF Invoicing</span>
+          </div>
+
+          <!-- Quick Stats Pill -->
+          <div class="project-card__quick-stats">
+            <div class="stat-pill"><span class="stat-pill__val">100%</span> <span class="stat-pill__lbl">HMAC Verified</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">&lt; 140ms</span> <span class="stat-pill__lbl">DB Queries</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">99.9%</span> <span class="stat-pill__lbl">Cart Locking</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">40+</span> <span class="stat-pill__lbl">Luxury SKUs</span></div>
+          </div>
+
+          <!-- Architecture & Key Features Box (Direct in Box) -->
+          <div class="project-card__feature-box">
+            <div class="feature-box__heading"><i class="fas fa-layer-group"></i> Architecture &amp; Key Capabilities</div>
+            <p class="feature-box__desc">
+              Production-grade luxury e-commerce platform engineered with 3-tier Role-Based Access Control (Customer, Admin, Superadmin) and cryptographic payment verification:
+            </p>
+            <div class="project-features-list">
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Atomic Inventory Reservation:</strong> 99.9% consistency stock-locking algorithms eliminating cart race conditions and double-spending.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>100% HMAC Webhook Verification:</strong> Cryptographic SHA-256 Razorpay webhook validation triggering automated PDF invoice dispatch.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>High-Speed Database Queries:</strong> &lt; 140ms response latency across 40+ catalog items with compound MongoDB indexing and aggregation pipelines.</div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Express</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">Razorpay</span>
+            <span class="tech-tag">JWT Auth</span>
+            <span class="tech-tag">RBAC Security</span>
+            <span class="tech-tag">Vercel Deployment</span>
+          </div>
+
+          <!-- Action Row with View Stack, Live & GitHub -->
+          <div class="project-card__action-row">
+            <div class="project-card__action-left">
+              <button type="button" class="btn btn--cyan-glow btn--sm project-stack-btn" onclick="openStackModal('jewelstreet')" title="View Full Technical Architecture & Stack">
+                <i class="fas fa-layer-group"></i> <span>View Stack</span>
+              </button>
+            </div>
+            <div class="project-card__quick-links">
+              <a href="https://jewel-street.vercel.app/" target="_blank" rel="noopener" class="btn btn--gold btn--sm" id="jewelLiveBtn2">
+                <i class="fas fa-external-link-alt"></i> Live
+              </a>
+              <a href="https://github.com/sahudev06" target="_blank" rel="noopener" class="btn btn--outline btn--sm" id="jewelGithubBtn">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 2: Smishing Detection -->
+      <article class="project-card reveal" data-category="ai" id="projectSmishing">
+        <div class="project-card__media">
+          <div class="project-direct-preview">
+            <div class="direct-preview__bar">
+              <div class="direct-preview__dots">
+                <span class="direct-preview__dot direct-preview__dot--red"></span>
+                <span class="direct-preview__dot direct-preview__dot--yellow"></span>
+                <span class="direct-preview__dot direct-preview__dot--green"></span>
+              </div>
+              <a href="https://multilingual-smishing-detection-mpefckdxfu4w9kkzxxfn2r.streamlit.app/" target="_blank" rel="noopener" class="direct-preview__url" title="Open Deployed App: https://multilingual-smishing-detection-mpefckdxfu4w9kkzxxfn2r.streamlit.app/">
+                <i class="fas fa-lock"></i> https://multilingual-smishing-detection-mpefckdxfu4w9kkzxxfn2r.streamlit.app/
+              </a>
+              <a href="https://multilingual-smishing-detection-mpefckdxfu4w9kkzxxfn2r.streamlit.app/" target="_blank" rel="noopener" class="direct-preview__external" title="Open in New Tab">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <div class="direct-preview__frame-wrap">
+              <iframe src="https://multilingual-smishing-detection-mpefckdxfu4w9kkzxxfn2r.streamlit.app/?embed=true" title="Multilingual Smishing Detection Live App" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__header-row">
+            <div class="project-card__index" aria-hidden="true">02</div>
+            <div class="project-card__period">Jul 2026 — Aug 2026</div>
+            <a href="https://multilingual-smishing-detection-mpefckdxfu4w9kkzxxfn2r.streamlit.app/" target="_blank" rel="noopener" class="deployed-link-chip" title="Live Streamlit App">
+              <span class="sync-dot pulse-green"></span> <span>Deployed Live</span> <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          <h3 class="project-card__title">Multilingual Smishing Detection</h3>
+          <p class="project-card__desc">
+            Advanced cross-lingual SMS phishing classifier detecting fraudulent threats across 21 languages with 94.89% validation accuracy and token-level SHAP explainability.
+          </p>
+
+          <!-- Core Highlights -->
+          <div class="project-card__highlights">
+            <span class="highlight-chip"><i class="fas fa-language"></i> 21 Languages</span>
+            <span class="highlight-chip"><i class="fas fa-bullseye"></i> 94.89% Accuracy</span>
+            <span class="highlight-chip"><i class="fas fa-chart-line"></i> 95.73% F1-Score</span>
+            <span class="highlight-chip"><i class="fas fa-search-plus"></i> SHAP Explainability</span>
+          </div>
+
+          <!-- Quick Stats Pill -->
+          <div class="project-card__quick-stats">
+            <div class="stat-pill"><span class="stat-pill__val">94.89%</span> <span class="stat-pill__lbl">Accuracy</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">21</span> <span class="stat-pill__lbl">Languages</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">0.957</span> <span class="stat-pill__lbl">F1-Score</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">&lt; 80ms</span> <span class="stat-pill__lbl">Inference</span></div>
+          </div>
+
+          <!-- Architecture & Dataset Details Box (Direct in Box) -->
+          <div class="project-card__feature-box">
+            <div class="feature-box__heading"><i class="fas fa-shield-alt"></i> Model Architecture &amp; Explainability</div>
+            <p class="feature-box__desc">
+              Cross-lingual SMS fraud defense trained and evaluated on 5,574 labeled samples across 21 global and Indic languages:
+            </p>
+            <div class="project-features-list">
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>High-Precision Model:</strong> 94.89% validation accuracy and 0.957 Macro F1-score (+6.3% over baseline BERT models).</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Cross-Lingual Embeddings:</strong> 768-dimensional XLM-RoBERTa contextual representations capturing subtle fraud patterns across 21 languages.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Sub-80ms SHAP Explainability:</strong> Real-time local feature attribution scoring top 20 phishing keyword risk weights via FastAPI.</div>
+            </div>
+            <p class="streamlit-wake-hint" style="margin-top: 6px;">
+              <i class="fas fa-moon"></i> App may sleep when idle — click <strong>"Yes, get this app back up!"</strong> on the preview to wake it.
+            </p>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">XLM-RoBERTa</span>
+            <span class="tech-tag">XGBoost</span>
+            <span class="tech-tag">SHAP</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">FastAPI</span>
+          </div>
+
+          <!-- Action Row with View Stack, Live & GitHub -->
+          <div class="project-card__action-row">
+            <div class="project-card__action-left">
+              <button type="button" class="btn btn--cyan-glow btn--sm project-stack-btn" onclick="openStackModal('smishing')" title="View Full Technical Architecture & Stack">
+                <i class="fas fa-layer-group"></i> <span>View Stack</span>
+              </button>
+            </div>
+            <div class="project-card__quick-links">
+              <a href="https://multilingual-smishing-detection-mpefckdxfu4w9kkzxxfn2r.streamlit.app/" target="_blank" rel="noopener" class="btn btn--gold btn--sm" id="smishLiveBtn">
+                <i class="fas fa-external-link-alt"></i> Live
+              </a>
+              <a href="https://github.com/sahudev06" target="_blank" rel="noopener" class="btn btn--outline btn--sm" id="smishGithubBtn">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- PROJECT 3: VisionSense AI -->
+      <article class="project-card reveal" data-category="ai" id="projectVisionSenseAI">
+        <div class="project-card__media">
+          <div class="project-direct-preview">
+            <div class="direct-preview__bar">
+              <div class="direct-preview__dots">
+                <span class="direct-preview__dot direct-preview__dot--red"></span>
+                <span class="direct-preview__dot direct-preview__dot--yellow"></span>
+                <span class="direct-preview__dot direct-preview__dot--green"></span>
+              </div>
+              <a href="https://vision-sense-ai.vercel.app/" target="_blank" rel="noopener" class="direct-preview__url" title="Open Deployed Site: https://vision-sense-ai.vercel.app/">
+                <i class="fas fa-lock"></i> https://vision-sense-ai.vercel.app/
+              </a>
+              <a href="https://vision-sense-ai.vercel.app/" target="_blank" rel="noopener" class="direct-preview__external" title="Open in New Tab">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <div class="direct-preview__frame-wrap">
+              <iframe src="https://vision-sense-ai.vercel.app/" title="VisionSense AI Live Preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__header-row">
+            <div class="project-card__index" aria-hidden="true">03</div>
+            <div class="project-card__period">2026</div>
+            <a href="https://vision-sense-ai.vercel.app/" target="_blank" rel="noopener" class="deployed-link-chip" title="Live Deployed Web App">
+              <span class="sync-dot pulse-green"></span> <span>Deployed Live</span> <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          <h3 class="project-card__title">VisionSense AI</h3>
+          <p class="project-card__desc">
+            Voice-first accessibility platform for the visually impaired featuring continuous hands-free wake-word recognition, zero-latency speech synthesis, and dual cloud/edge vision reasoning.
+          </p>
+
+          <!-- Core Highlights -->
+          <div class="project-card__highlights">
+            <span class="highlight-chip"><i class="fas fa-microphone"></i> Wake-Word Engine</span>
+            <span class="highlight-chip"><i class="fas fa-sparkles"></i> Gemini 1.5 Flash</span>
+            <span class="highlight-chip"><i class="fas fa-volume-up"></i> Web Speech TTS</span>
+            <span class="highlight-chip"><i class="fas fa-laptop-code"></i> Offline Ollama</span>
+          </div>
+
+          <!-- Quick Stats Pill -->
+          <div class="project-card__quick-stats">
+            <div class="stat-pill"><span class="stat-pill__val">&lt; 350ms</span> <span class="stat-pill__lbl">Wake-Word</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">99.4%</span> <span class="stat-pill__lbl">Scene Reasoning</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">0 ms</span> <span class="stat-pill__lbl">Voice TTS</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">100%</span> <span class="stat-pill__lbl">Offline Fallback</span></div>
+          </div>
+
+          <!-- Architecture & Features Box (Direct in Box) -->
+          <div class="project-card__feature-box">
+            <div class="feature-box__heading"><i class="fas fa-universal-access"></i> Voice Engine &amp; Vision Architecture</div>
+            <p class="feature-box__desc">
+              Assistive voice-first platform empowering visually impaired users through real-time environmental reasoning:
+            </p>
+            <div class="project-features-list">
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Sub-350ms Wake-Word:</strong> Instantaneous client-side &ldquo;Hey Vision Sense&rdquo; continuous keyword trigger with zero network dependency.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Dual Vision Engine:</strong> Google Gemini 1.5 Flash cloud multimodal vision (99.4% scene reasoning accuracy) with local Ollama VLM fallback.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Zero-Latency Voice UX:</strong> 0 ms browser-native SpeechSynthesisUtterance with 100% WCAG 2.1 AAA contrast and ARIA live regions.</div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">Google Gemini</span>
+            <span class="tech-tag">Ollama</span>
+            <span class="tech-tag">Web Speech</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">HTML5 Canvas</span>
+            <span class="tech-tag">ARIA Accessible</span>
+          </div>
+
+          <!-- Action Row with View Stack, Live & GitHub -->
+          <div class="project-card__action-row">
+            <div class="project-card__action-left">
+              <button type="button" class="btn btn--cyan-glow btn--sm project-stack-btn" onclick="openStackModal('visionsense')" title="View Full Technical Architecture & Stack">
+                <i class="fas fa-layer-group"></i> <span>View Stack</span>
+              </button>
+            </div>
+            <div class="project-card__quick-links">
+              <a href="https://vision-sense-ai.vercel.app/" target="_blank" rel="noopener" class="btn btn--gold btn--sm" id="visionSenseLiveBtn">
+                <i class="fas fa-external-link-alt"></i> Live
+              </a>
+              <a href="https://github.com/sahudev-05/VisionSense-AI" target="_blank" rel="noopener" class="btn btn--outline btn--sm" id="visionSenseGithubBtn">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 4: 3D Solar System Simulation -->
+      <article class="project-card reveal" data-category="ai" id="projectSolarSystem">
+        <div class="project-card__media">
+          <div class="project-direct-preview">
+            <div class="direct-preview__bar">
+              <div class="direct-preview__dots">
+                <span class="direct-preview__dot direct-preview__dot--red"></span>
+                <span class="direct-preview__dot direct-preview__dot--yellow"></span>
+                <span class="direct-preview__dot direct-preview__dot--green"></span>
+              </div>
+              <div class="direct-preview__url">
+                <i class="fas fa-play-circle"></i> 3D Solar System — Demo Recording
+              </div>
+              <a href="https://github.com/sahudev-05/3d-solar_system_simulation" target="_blank" rel="noopener" class="direct-preview__external" title="Open on GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <div class="direct-preview__frame-wrap">
+              <video
+                src="assets/videos/solar-system-demo.mp4"
+                autoplay loop muted playsinline
+                style="width:100%;height:100%;object-fit:contain;display:block;background:#000;"
+                title="3D Solar System Simulation Demo"
+              ></video>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__header-row">
+            <div class="project-card__index" aria-hidden="true">04</div>
+            <div class="project-card__period">CIS2708 — Edge Hill UK, Jun 2026</div>
+          </div>
+          <h3 class="project-card__title">3D Solar System Simulation</h3>
+          <p class="project-card__desc">
+            Physically accurate interactive 3D solar simulation featuring Keplerian orbital trajectories, Phong illumination shaders, celestial textures, and an unrestricted 6-DOF orbital camera.
+          </p>
+
+          <!-- Core Highlights -->
+          <div class="project-card__highlights">
+            <span class="highlight-chip"><i class="fas fa-circle-notch"></i> Keplerian Orbits</span>
+            <span class="highlight-chip"><i class="fas fa-globe"></i> 8 Celestial Bodies</span>
+            <span class="highlight-chip"><i class="fas fa-sun"></i> Phong Lighting</span>
+            <span class="highlight-chip"><i class="fas fa-tachometer-alt"></i> 60 FPS Real-time</span>
+          </div>
+
+          <!-- Quick Stats Pill -->
+          <div class="project-card__quick-stats">
+            <div class="stat-pill"><span class="stat-pill__val">60 FPS</span> <span class="stat-pill__lbl">Locked Render</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">8 Bodies</span> <span class="stat-pill__lbl">Kepler Physics</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">2,500+</span> <span class="stat-pill__lbl">Particles</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">&lt; 1.2 MB</span> <span class="stat-pill__lbl">Asset Weight</span></div>
+          </div>
+
+          <!-- Architecture & Features Box (Direct in Box) -->
+          <div class="project-card__feature-box">
+            <div class="feature-box__heading"><i class="fas fa-meteor"></i> Graphics Pipeline &amp; Keplerian Physics</div>
+            <p class="feature-box__desc">
+              Accurate celestial simulation engineered in Python OpenGL with Phong illumination and 6-DOF orbital exploration:
+            </p>
+            <div class="project-features-list">
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Keplerian Mechanics:</strong> Mathematical elliptical trajectories with real-time velocity physics for 8 celestial bodies and 0.1x–100x time warp.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Custom Shader Pipeline:</strong> Multi-pass Phong lighting, specular highlight mapping, procedural asteroid belt (2,500+ particles), and Saturn rings.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>High-Performance Engine:</strong> Locked 60 FPS render loop under &lt; 1.2 MB total asset footprint with 6-DOF free orbital navigation.</div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pygame</span>
+            <span class="tech-tag">PyOpenGL</span>
+            <span class="tech-tag">GL Shaders</span>
+            <span class="tech-tag">NumPy</span>
+            <span class="tech-tag">Keplerian Orbits</span>
+          </div>
+
+          <!-- Action Row with View Stack, Demo & GitHub -->
+          <div class="project-card__action-row">
+            <div class="project-card__action-left">
+              <button type="button" class="btn btn--cyan-glow btn--sm project-stack-btn" onclick="openStackModal('solarsystem')" title="View Full Technical Architecture & Stack">
+                <i class="fas fa-layer-group"></i> <span>View Stack</span>
+              </button>
+            </div>
+            <div class="project-card__quick-links">
+              <button class="btn btn--gold btn--sm" id="solarDemoBtn" onclick="document.getElementById('solarDemoModal').classList.add('active');">
+                <i class="fas fa-play"></i> Demo
+              </button>
+              <a href="https://github.com/sahudev-05/3d-solar_system_simulation" target="_blank" rel="noopener" class="btn btn--outline btn--sm" id="solarGithubBtn">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 5: Acadly 🎓 -->
+      <article class="project-card reveal" data-category="mobile web" id="projectAcadly">
+        <div class="project-card__media">
+          <div class="project-direct-preview acadly-preview-container">
+            <div class="direct-preview__bar">
+              <div class="direct-preview__dots">
+                <span class="direct-preview__dot direct-preview__dot--red"></span>
+                <span class="direct-preview__dot direct-preview__dot--yellow"></span>
+                <span class="direct-preview__dot direct-preview__dot--green"></span>
+              </div>
+              <div class="direct-preview__url">
+                <i class="fas fa-play-circle"></i> Acadly 🎓 • Flutter App Demo Recording
+              </div>
+              <button class="direct-preview__external" onclick="openAcadlyModal()" title="View System Architecture &amp; Specs">
+                <i class="fas fa-layer-group"></i>
+              </button>
+            </div>
+
+            <div class="direct-preview__frame-wrap" style="background:#02060f;display:flex;align-items:center;justify-content:center;position:relative;">
+              <video
+                src="assets/videos/acadly-demo.mp4"
+                autoplay loop muted playsinline controls
+                style="width:100%;height:100%;object-fit:contain;display:block;background:#02060f;"
+                title="Acadly Flutter App Live Walkthrough Demo"
+              ></video>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__header-row">
+            <div class="project-card__index" aria-hidden="true">05</div>
+            <div class="project-card__period">Flutter • Drift SQLite • Firebase</div>
+          </div>
+          <h3 class="project-card__title">Acadly 🎓</h3>
+          <p class="project-card__desc">
+            All-in-One Academic Management, Attendance Forecaster, and Productivity Companion built on an offline-first Drift SQLite local architecture synchronized with Google Firebase.
+          </p>
+
+          <!-- Core Highlights -->
+          <div class="project-card__highlights">
+            <span class="highlight-chip"><i class="fas fa-database"></i> Drift SQLite Partitioning</span>
+            <span class="highlight-chip"><i class="fas fa-cloud"></i> Firebase Cloud Sync</span>
+            <span class="highlight-chip"><i class="fas fa-calculator"></i> Attendance Forecaster</span>
+            <span class="highlight-chip"><i class="fas fa-cubes"></i> Riverpod 3 State</span>
+          </div>
+
+          <!-- Quick Stats Pill -->
+          <div class="project-card__quick-stats">
+            <div class="stat-pill"><span class="stat-pill__val">0 ms</span> <span class="stat-pill__lbl">Drift Queries</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">100%</span> <span class="stat-pill__lbl">Conflict-Free</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">75%</span> <span class="stat-pill__lbl">Attendance Guard</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">8 Modules</span> <span class="stat-pill__lbl">Academic Suite</span></div>
+          </div>
+
+          <!-- Architecture & Features Box (Direct in Box) -->
+          <div class="project-card__feature-box">
+            <div class="feature-box__heading"><i class="fas fa-shield-alt"></i> Offline-First Architecture &amp; Sync</div>
+            <p class="feature-box__desc">
+              Full academic productivity companion built on an offline-first Drift SQLite engine synchronized two-way with Firebase:
+            </p>
+            <div class="project-features-list">
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Zero-Latency Local Queries:</strong> 0 ms Drift SQLite indexed queries with isolated per-user databases (<code>acadly_$uid.sqlite</code>) ensuring 100% data privacy.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Attendance Forecaster:</strong> Predictive threshold engine calculating required sessions to sustain ≥ 75% attendance criteria.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>8 Modular Capabilities:</strong> 100% conflict-free timetable scheduler, assignment trackers, exam alerts, floating-point GPA calculator, and Pomodoro timer.</div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Riverpod 3</span>
+            <span class="tech-tag">Drift (SQLite)</span>
+            <span class="tech-tag">Firebase Auth</span>
+            <span class="tech-tag">Cloud Firestore</span>
+            <span class="tech-tag">GoRouter</span>
+          </div>
+
+          <!-- Action Row with View Stack, Specs & GitHub -->
+          <div class="project-card__action-row">
+            <div class="project-card__action-left">
+              <button type="button" class="btn btn--cyan-glow btn--sm project-stack-btn" onclick="openStackModal('acadly')" title="View Full Technical Architecture & Stack">
+                <i class="fas fa-layer-group"></i> <span>View Stack</span>
+              </button>
+            </div>
+            <div class="project-card__quick-links">
+              <button class="btn btn--gold btn--sm" id="acadlySpecsBtn" onclick="openAcadlyModal()">
+                <i class="fas fa-layer-group"></i> Specs
+              </button>
+              <a href="https://github.com/sahudev06" target="_blank" rel="noopener" class="btn btn--outline btn--sm" id="acadlyGithubBtn">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLAR SYSTEM DEMO MODAL ──────────────────────────────── -->
+<div id="solarDemoModal" class="video-modal" role="dialog" aria-modal="true" aria-label="Solar System Demo Video">
+  <div class="video-modal__backdrop" onclick="closeSolarModal()"></div>
+  <div class="video-modal__panel">
+    <div class="video-modal__bar">
+      <div class="video-modal__title">
+        <i class="fas fa-planet-ringed" style="color:var(--gold)"></i>
+        <span>3D Solar System Simulation — Full Demo</span>
+      </div>
+      <button class="video-modal__close" onclick="closeSolarModal()" aria-label="Close demo">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="video-modal__body">
+      <video
+        id="solarDemoVideo"
+        src="assets/videos/solar-system-demo.mp4"
+        controls autoplay loop
+        style="width:100%;height:100%;object-fit:contain;background:#000;"
+        title="3D Solar System Simulation Full Demo"
+      ></video>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     TEAM & COLLABORATIVE PROJECTS
+════════════════════════════════════════════════════════════ -->
+<section id="team" class="section section--alt" aria-label="Team and Collaborative Projects">
+  <span class="section__number" aria-hidden="true">3B</span>
+  <div class="container">
+    <div class="section__header reveal">
+      <div class="section__label">Built Together</div>
+      <h2 class="section__title">Team &amp; <em>Collaborative</em> Projects</h2>
+      <p class="section__subtitle">Cross-functional engineering built in collaboration with teammates — shared vision, specialized ownership.</p>
+    </div>
+
+    <div class="team-projects__grid">
+
+      <!-- COLLABORATIVE PROJECT 1: VisionSense AI Smart Cane -->
+      <article class="project-card team-project-card reveal" id="projectVisionCareTeam">
+        <div class="project-card__media team-project-card__media">
+          <div class="hardware-telemetry">
+            <div class="hardware-telemetry__bar">
+              <span class="hardware-telemetry__badge"><i class="fas fa-microchip"></i> ESP32-CAM Architecture</span>
+              <span class="hardware-telemetry__status"><span class="status-pulse"></span> BLE Online</span>
+            </div>
+            
+            <div class="hardware-telemetry__radar">
+              <div class="radar-circle circle-1"></div>
+              <div class="radar-circle circle-2"></div>
+              <div class="radar-circle circle-3"></div>
+              <div class="radar-crosshair-x"></div>
+              <div class="radar-crosshair-y"></div>
+              <div class="radar-sweep"></div>
+              
+              <div class="radar-cane-icon" title="Cane Transceiver Core">
+                <i class="fas fa-blind"></i>
+              </div>
+
+              <!-- Sensor Pings -->
+              <div class="radar-ping ping-front" title="Front Obstacle: 1.2m">
+                <span class="ping-dot"></span>
+                <span class="ping-label">Front: 1.2m</span>
+              </div>
+              <div class="radar-ping ping-left" title="Left Clearance: 0.8m">
+                <span class="ping-dot"></span>
+                <span class="ping-label">Left: 0.8m</span>
+              </div>
+              <div class="radar-ping ping-right" title="Right Clearance: Safe">
+                <span class="ping-dot ping-dot--green"></span>
+                <span class="ping-label">Right: Safe</span>
+              </div>
+              <div class="radar-ping ping-water" title="Surface Moisture Sensor: Dry">
+                <span class="ping-dot ping-dot--cyan"></span>
+                <span class="ping-label">Ground: Dry</span>
+              </div>
+            </div>
+
+            <div class="hardware-telemetry__chips">
+              <div class="tele-chip"><i class="fas fa-camera"></i> Camera Setup: <strong>ESP32-CAM Stream</strong></div>
+              <div class="tele-chip"><i class="fas fa-wave-square"></i> Sensor Array: <strong>6x Ultrasonic</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__header-row">
+            <span class="team-tag team-tag--group"><i class="fas fa-users"></i> Team Project</span>
+            <span class="project-card__period">Jun 2026 — Aug 2026</span>
+          </div>
+          
+          <h3 class="project-card__title">VisionSense AI Smart Cane</h3>
+          <p class="project-card__desc">
+            Hardware-software assistive navigation cane integrating multi-sensor environmental awareness, ultrasonic ranging, surface moisture hazard alerts, and low-latency BLE telemetry.
+          </p>
+
+          <!-- Core Highlights -->
+          <div class="project-card__highlights">
+            <span class="highlight-chip"><i class="fas fa-microchip"></i> ESP32 + ESP32-CAM</span>
+            <span class="highlight-chip"><i class="fas fa-broadcast-tower"></i> 6x Ultrasonic 360°</span>
+            <span class="highlight-chip"><i class="fas fa-water"></i> Water Hazard Alert</span>
+            <span class="highlight-chip"><i class="fas fa-bolt"></i> &lt;200ms BLE Latency</span>
+          </div>
+
+          <!-- Quick Stats Pill -->
+          <div class="project-card__quick-stats">
+            <div class="stat-pill"><span class="stat-pill__val">120° FOV</span> <span class="stat-pill__lbl">2cm–400cm</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">&lt; 30ms</span> <span class="stat-pill__lbl">Haptic Pulse</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">14+ Hrs</span> <span class="stat-pill__lbl">Battery Life</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">50+</span> <span class="stat-pill__lbl">Field Trials</span></div>
+          </div>
+
+          <!-- PROMINENT MY CONTRIBUTION SECTION (Direct in Box) -->
+          <div class="project-card__feature-box">
+            <div class="feature-box__heading"><i class="fas fa-microchip"></i> My Contribution: Embedded Hardware &amp; Camera</div>
+            <p class="feature-box__desc">
+              Engineered the core embedded hardware, physical wiring, sensor fusion, and wireless telemetry pipeline:
+            </p>
+            <div class="project-features-list">
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>6x Ultrasonic Array (120° FOV):</strong> Built dual-rail transducer circuitry detecting obstacles from 2cm to 400cm covering upper torso and ground drop-offs.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Sub-30ms Haptic &amp; Buzzer Alerts:</strong> ERM vibration motors in the ergonomic grip and piezo alarm responding in &lt; 30ms with surface water detection.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>14+ Hour Battery Life:</strong> Custom power management with ESP32 deep-sleep cycling on a 2000mAh LiPo cell.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>BLE 5.0 Wireless Telemetry:</strong> Authored low-latency C++ firmware syncing sensor telemetry to companion Flutter app in &lt; 200ms across 50+ test trials.</div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">ESP32</span>
+            <span class="tech-tag">ESP32-CAM</span>
+            <span class="tech-tag">Embedded C++</span>
+            <span class="tech-tag">BLE</span>
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">FreeRTOS</span>
+          </div>
+
+          <!-- Action Row with View Stack, Code & App -->
+          <div class="project-card__action-row">
+            <div class="project-card__action-left">
+              <button type="button" class="btn btn--cyan-glow btn--sm project-stack-btn" onclick="openStackModal('visioncane')" title="View Full Technical Architecture & Stack">
+                <i class="fas fa-layer-group"></i> <span>View Stack</span>
+              </button>
+            </div>
+            <div class="project-card__quick-links">
+              <a href="https://github.com/sahudev06" target="_blank" rel="noopener" class="btn btn--gold btn--sm" id="visionTeamGithubBtn">
+                <i class="fab fa-github"></i> Code
+              </a>
+              <a href="https://vision-sense-ai.vercel.app/" target="_blank" rel="noopener" class="btn btn--outline btn--sm" id="visionTeamWebBtn">
+                <i class="fas fa-external-link-alt"></i> App
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- COLLABORATIVE PROJECT 2: LegalSaathi -->
+      <article class="project-card team-project-card reveal" id="projectLegalSaathi">
+        <div class="project-card__media team-project-card__media">
+          <div class="project-direct-preview legal-preview-container">
+            <div class="direct-preview__bar">
+              <div class="direct-preview__dots">
+                <span class="direct-preview__dot direct-preview__dot--red"></span>
+                <span class="direct-preview__dot direct-preview__dot--yellow"></span>
+                <span class="direct-preview__dot direct-preview__dot--green"></span>
+              </div>
+              <a href="https://legal-sathi-iota.vercel.app/" target="_blank" rel="noopener" class="direct-preview__url" title="Open Deployed Web App: https://legal-sathi-iota.vercel.app/">
+                <i class="fas fa-lock"></i> https://legal-sathi-iota.vercel.app/
+              </a>
+              <a href="https://legal-sathi-iota.vercel.app/" target="_blank" rel="noopener" class="direct-preview__external" title="Open in New Tab">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+
+            <div class="direct-preview__frame-wrap">
+              <iframe src="https://legal-sathi-iota.vercel.app/" title="LegalSaathi Live Web App" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__header-row">
+            <span class="team-tag team-tag--group"><i class="fas fa-users"></i> Team Project</span>
+            <span class="project-card__period">2026 • React 18 + FastAPI RAG</span>
+            <a href="https://legal-sathi-iota.vercel.app/" target="_blank" rel="noopener" class="deployed-link-chip" title="Live Deployed Web App">
+              <span class="sync-dot pulse-green"></span> <span>Deployed Live</span> <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          
+          <h3 class="project-card__title">LegalSaathi ⚖️</h3>
+          <p class="project-card__desc">
+            Dark, premium, and privacy-first legal AI platform empowering women across India with plain-language constitutional safeguards, penal protections, and instant crisis helplines.
+          </p>
+
+          <!-- Core Highlights -->
+          <div class="project-card__highlights">
+            <span class="highlight-chip"><i class="fas fa-brain"></i> LangChain RAG</span>
+            <span class="highlight-chip"><i class="fas fa-balance-scale"></i> PoSH &amp; IPC Rights</span>
+            <span class="highlight-chip"><i class="fas fa-shield-alt"></i> Zero-Log Privacy</span>
+            <span class="highlight-chip"><i class="fas fa-bolt"></i> Offline Fallback</span>
+          </div>
+
+          <!-- Quick Stats Pill -->
+          <div class="project-card__quick-stats">
+            <div class="stat-pill"><span class="stat-pill__val">100%</span> <span class="stat-pill__lbl">Zero-Log Privacy</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">5,000+</span> <span class="stat-pill__lbl">Legal Citations</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">&lt; 450ms</span> <span class="stat-pill__lbl">RAG Latency</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">0 Cost</span> <span class="stat-pill__lbl">Offline Fallback</span></div>
+          </div>
+
+          <!-- PROMINENT MY CONTRIBUTION SECTION (Direct in Box) -->
+          <div class="project-card__feature-box">
+            <div class="feature-box__heading"><i class="fas fa-search"></i> My Role &amp; Contribution: Retrieval Engine &amp; Fallback Designer</div>
+            <p class="feature-box__desc">
+              Architected the Retrieval-Augmented Generation (RAG) backend pipeline and dual-mode resilient inference engine:
+            </p>
+            <div class="project-features-list">
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>5,000+ Legal Passages Indexed:</strong> Chunked statutory acts (PoSH, BNS, IPC) into semantic token windows with metadata tagging.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Sub-450ms TF-IDF Retrieval:</strong> Built scikit-learn TFIDFRetriever providing high-precision statutory recall in &lt; 450ms.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Zero-Cost Offline Fallback:</strong> Engineered resilient keyword-context retrieval matching guaranteeing 100% uptime when API keys are absent.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>In-Memory Privacy:</strong> Enforced strict in-memory execution ensuring 100% of user queries leave zero server logs.</div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">LangChain RAG</span>
+            <span class="tech-tag">TF-IDF</span>
+            <span class="tech-tag">Gemini Flash</span>
+            <span class="tech-tag">React 18</span>
+            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">GSAP</span>
+          </div>
+
+          <!-- Action Row with View Stack & GitHub -->
+          <div class="project-card__action-row">
+            <div class="project-card__action-left">
+              <button type="button" class="btn btn--cyan-glow btn--sm project-stack-btn" onclick="openStackModal('legalsaathi')" title="View Full Technical Architecture & Stack">
+                <i class="fas fa-layer-group"></i> <span>View Stack</span>
+              </button>
+            </div>
+            <div class="project-card__quick-links">
+              <a href="https://legal-sathi-iota.vercel.app/" target="_blank" rel="noopener" class="btn btn--gold btn--sm" id="legalSaathiLiveBtn">
+                <i class="fas fa-external-link-alt"></i> Live App
+              </a>
+              <a href="https://github.com/sahudev-05/LegalSathi" target="_blank" rel="noopener" class="btn btn--outline btn--sm" id="legalSaathiGithubBtn" title="GitHub Repository">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- COLLABORATIVE PROJECT 3: Department Resource & Management System -->
+      <article class="project-card team-project-card reveal" id="projectDeptMgmt">
+        <div class="project-card__media team-project-card__media">
+          <div class="project-direct-preview dept-preview-container">
+            <div class="direct-preview__bar">
+              <div class="direct-preview__dots">
+                <span class="direct-preview__dot direct-preview__dot--red"></span>
+                <span class="direct-preview__dot direct-preview__dot--yellow"></span>
+                <span class="direct-preview__dot direct-preview__dot--green"></span>
+              </div>
+              <a href="https://department-app-dcyvmzjbnddaurx4kbbqzq.streamlit.app/" target="_blank" rel="noopener" class="direct-preview__url" title="Open Deployed App: https://department-app-dcyvmzjbnddaurx4kbbqzq.streamlit.app/">
+                <i class="fas fa-lock"></i> https://department-app-dcyvmzjbnddaurx4kbbqzq.streamlit.app/
+              </a>
+              <a href="https://department-app-dcyvmzjbnddaurx4kbbqzq.streamlit.app/" target="_blank" rel="noopener" class="direct-preview__external" title="Open in New Tab">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+
+            <div class="direct-preview__frame-wrap">
+              <iframe src="https://department-app-dcyvmzjbnddaurx4kbbqzq.streamlit.app/?embed=true" title="Department Resource &amp; Management Portal Live App" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__header-row">
+            <span class="team-tag team-tag--group"><i class="fas fa-users"></i> Team Project</span>
+            <span class="project-card__period">Python 3.11 • Flask • PyJWT</span>
+            <a href="https://department-app-dcyvmzjbnddaurx4kbbqzq.streamlit.app/" target="_blank" rel="noopener" class="deployed-link-chip" title="Live Streamlit Portal">
+              <span class="sync-dot pulse-green"></span> <span>Deployed Live</span> <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          
+          <h3 class="project-card__title">Department Resource &amp; Management</h3>
+          <p class="project-card__desc">
+            Integrated university department administration platform streamlining resource scheduling, conflict-free room reservations, faculty indexing, and media asset pipelines.
+          </p>
+
+          <!-- Core Highlights -->
+          <div class="project-card__highlights">
+            <span class="highlight-chip"><i class="fas fa-calendar-check"></i> Conflict-Free Booking</span>
+            <span class="highlight-chip"><i class="fas fa-key"></i> PyJWT RBAC</span>
+            <span class="highlight-chip"><i class="fas fa-database"></i> Structured JSON Store</span>
+            <span class="highlight-chip"><i class="fas fa-history"></i> Audit Trail Logger</span>
+          </div>
+
+          <!-- Quick Stats Pill -->
+          <div class="project-card__quick-stats">
+            <div class="stat-pill"><span class="stat-pill__val">0 Clashes</span> <span class="stat-pill__lbl">20+ Halls</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">7 Modules</span> <span class="stat-pill__lbl">Blueprints</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">100%</span> <span class="stat-pill__lbl">Audit Logged</span></div>
+            <span class="stat-pill-divider"></span>
+            <div class="stat-pill"><span class="stat-pill__val">&lt; 60ms</span> <span class="stat-pill__lbl">API Response</span></div>
+          </div>
+
+          <!-- PROMINENT MY CONTRIBUTION SECTION (Direct in Box) -->
+          <div class="project-card__feature-box">
+            <div class="feature-box__heading"><i class="fas fa-server"></i> My Role &amp; Contribution: Lead Full-Stack Developer &amp; Systems Architect</div>
+            <p class="feature-box__desc">
+              Architected the modular Flask application layout, role-based JWT authentication, and room reservation engine:
+            </p>
+            <div class="project-features-list">
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Conflict-Free Scheduling Engine:</strong> Atomic reservation overlap algorithms eliminating 100% of booking collisions across 20+ department facilities.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>7 Decoupled Blueprints:</strong> Scalable architecture segregating Rooms, Faculty, Media, Admin, Analytics, Notifications, and Finder.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>100% JSON Audit Logging:</strong> PyJWT role-based authorization recording user ID, IP address, and UTC timestamps for all state mutations.</div>
+              <div class="project-feat-item"><i class="fas fa-check-circle"></i> <strong>Sub-60ms API Performance:</strong> High-speed JSON storage engine and automated image processing handling concurrent department workloads.</div>
+            </div>
+            <p class="streamlit-wake-hint" style="margin-top: 6px;">
+              <i class="fas fa-moon"></i> App may sleep when idle — click <strong>"Yes, get this app back up!"</strong> on the preview to wake it.
+            </p>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">Python 3.11</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">PyJWT</span>
+            <span class="tech-tag">Modular Blueprints</span>
+            <span class="tech-tag">JSON Persistence</span>
+            <span class="tech-tag">Image Processing</span>
+            <span class="tech-tag">RESTful APIs</span>
+          </div>
+
+          <!-- Action Row with View Stack & GitHub -->
+          <div class="project-card__action-row">
+            <div class="project-card__action-left">
+              <button type="button" class="btn btn--cyan-glow btn--sm project-stack-btn" onclick="openStackModal('deptmgmt')" title="View Full Technical Architecture & Stack">
+                <i class="fas fa-layer-group"></i> <span>View Stack</span>
+              </button>
+            </div>
+            <div class="project-card__quick-links">
+              <a href="https://department-app-dcyvmzjbnddaurx4kbbqzq.streamlit.app/" target="_blank" rel="noopener" class="btn btn--gold btn--sm" id="deptMgmtLiveBtn">
+                <i class="fas fa-external-link-alt"></i> Live App
+              </a>
+              <a href="https://github.com/sahudev-05/department-portal" target="_blank" rel="noopener" class="btn btn--outline btn--sm" id="deptMgmtGithubBtn" title="GitHub Repository">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ACADLY SYSTEM SPECS & ARCHITECTURE MODAL ──────────────── -->
+<div id="acadlySpecsModal" class="video-modal acadly-modal" role="dialog" aria-modal="true" aria-label="Acadly Full Architecture and Specifications">
+  <div class="video-modal__backdrop" onclick="closeAcadlyModal()"></div>
+  <div class="video-modal__panel acadly-modal__panel">
+    <div class="video-modal__bar">
+      <div class="video-modal__title">
+        <i class="fas fa-graduation-cap" style="color:var(--gold)"></i>
+        <span>Acadly 🎓 — Complete Architecture &amp; System Specification</span>
+      </div>
+      <button class="video-modal__close" onclick="closeAcadlyModal()" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="acadly-modal__body">
+      
+      <!-- Modal Section 1: Overview -->
+      <div class="acadly-spec-section">
+        <h4><i class="fas fa-compass"></i> System Overview</h4>
+        <p>
+          <strong>Acadly</strong> is an offline-first academic management, attendance forecasting, and productivity application engineered with Flutter (Dart 3) and Riverpod 3. It bridges rigorous offline SQLite storage (Drift) with real-time cloud synchronization (Google Firebase) to guarantee 100% data privacy, instant local execution, and seamless multi-device backup.
+        </p>
+      </div>
+
+      <!-- Modal Section 2: Mathematical Algorithms -->
+      <div class="acadly-spec-section">
+        <h4><i class="fas fa-calculator"></i> Verified Attendance Algorithms</h4>
+        <div class="spec-math-grid">
+          <div class="math-card">
+            <div class="math-card__title">Attendance Percentage</div>
+            <code>Percentage = (Classes Attended / Classes Held) * 100</code>
+          </div>
+          <div class="math-card">
+            <div class="math-card__title">Classes Needed for Target (T%)</div>
+            <code>Classes Needed = ceil( (T * Held - 100 * Attended) / (100 - T) )</code>
+          </div>
+          <div class="math-card">
+            <div class="math-card__title">Safe Margin Allowed to Miss</div>
+            <code>Can Miss = floor( (100 * Attended - T * Held) / T )</code>
+          </div>
+          <div class="math-card">
+            <div class="math-card__title">Hours Conversion</div>
+            <code>Avg Hours = Weekly Hours / Scheduled Days; Safe Hours = Classes * Avg Hours</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Section 3: Offline-First Architecture & Multi-User Isolation -->
+      <div class="acadly-spec-section">
+        <h4><i class="fas fa-shield-alt"></i> Isolated Multi-User Drift SQLite Architecture</h4>
+        <p>
+          Each authenticated user receives a dedicated database file partitioned by their unique Firebase UID (<code>acadly_$uid.sqlite</code>). This guarantees absolute zero risk of data leakage between student accounts on shared tablets or lab devices.
+        </p>
+        <div class="spec-pipeline-row">
+          <div class="spec-pipe-step">
+            <i class="fas fa-user-lock"></i>
+            <span>Firebase Auth</span>
+            <small>Email / Password</small>
+          </div>
+          <div class="pipe-arrow">&rarr;</div>
+          <div class="spec-pipe-step">
+            <i class="fas fa-database"></i>
+            <span>Local Drift SQLite</span>
+            <small><code>acadly_$uid.sqlite</code></small>
+          </div>
+          <div class="pipe-arrow">&rarr;</div>
+          <div class="spec-pipe-step">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <span>Firestore Sync</span>
+            <small><code>users/{uid}/...</code></small>
+          </div>
+          <div class="pipe-arrow">&rarr;</div>
+          <div class="spec-pipe-step">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Riverpod State</span>
+            <small>Reactive UI</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Section 4: Full Features Breakdown -->
+      <div class="acadly-spec-section">
+        <h4><i class="fas fa-layer-group"></i> Comprehensive Feature Matrix</h4>
+        <div class="spec-features-grid">
+          <div class="spec-f-box">
+            <strong><i class="fas fa-calendar-check text-gold"></i> Smart Attendance &amp; Timetable</strong>
+            <p>Mon–Sun scheduled class hours, customizable thresholds (75%, 80%, 85%), history logging (Present, Absent, Cancelled).</p>
+          </div>
+          <div class="spec-f-box">
+            <strong><i class="fas fa-graduation-cap text-gold"></i> GPA / CGPA Calculation Engine</strong>
+            <p>Course codes &amp; credit hours, semester grades, and full floating-point precision GPA computation with display rounding.</p>
+          </div>
+          <div class="spec-f-box">
+            <strong><i class="fas fa-tasks text-gold"></i> Planner, Tasks &amp; Exams</strong>
+            <p>Coursework deadline badges, priority tags (High, Medium, Low), exam schedules and scored marks vs max marks.</p>
+          </div>
+          <div class="spec-f-box">
+            <strong><i class="fas fa-stopwatch text-gold"></i> Pomodoro &amp; Study Analytics</strong>
+            <p>Integrated focus timer with work/short/long break intervals, study session logger, and weekly study goal tracking.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Section 5: Tech Stack Table -->
+      <div class="acadly-spec-section">
+        <h4><i class="fas fa-code"></i> Engineering Tech Stack</h4>
+        <div class="spec-tech-pills">
+          <span class="tech-tag">Flutter (Dart 3.x)</span>
+          <span class="tech-tag">Flutter Riverpod (v3.x)</span>
+          <span class="tech-tag">Drift (Type-safe SQLite)</span>
+          <span class="tech-tag">GoRouter (Declarative Routing)</span>
+          <span class="tech-tag">Google Firebase Auth</span>
+          <span class="tech-tag">Cloud Firestore</span>
+          <span class="tech-tag">shared_preferences</span>
+          <span class="tech-tag">Material 3 Design</span>
+          <span class="tech-tag">Google Fonts (Outfit)</span>
+          <span class="tech-tag">intl (Date/Time Utilities)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── COMPREHENSIVE TECH STACK MODAL (VIEW STACK) ──────────── -->
+<div id="techStackModal" class="video-modal tech-stack-modal" role="dialog" aria-modal="true" aria-label="Project Technical Architecture & Stack Specification">
+  <div class="video-modal__backdrop" onclick="closeStackModal()"></div>
+  <div class="video-modal__panel tech-stack-modal__panel">
+    <div class="video-modal__bar">
+      <div class="video-modal__title">
+        <i class="fas fa-layer-group" style="color:var(--gold)"></i>
+        <span>System Architecture &amp; Complete Tech Stack</span>
+      </div>
+      <button class="video-modal__close" onclick="closeStackModal()" aria-label="Close tech stack modal">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <!-- Interactive Project Selector Tabs -->
+    <div class="tech-stack-nav" id="stackNavTabs">
+      <button class="stack-tab-btn active" data-stack="jewelstreet" onclick="switchStackProject('jewelstreet')">
+        <i class="fas fa-gem"></i> JewelStreet
+      </button>
+      <button class="stack-tab-btn" data-stack="smishing" onclick="switchStackProject('smishing')">
+        <i class="fas fa-shield-alt"></i> Smishing Detection
+      </button>
+      <button class="stack-tab-btn" data-stack="visionsense" onclick="switchStackProject('visionsense')">
+        <i class="fas fa-eye"></i> VisionSense AI
+      </button>
+      <button class="stack-tab-btn" data-stack="solarsystem" onclick="switchStackProject('solarsystem')">
+        <i class="fas fa-globe"></i> 3D Solar System
+      </button>
+      <button class="stack-tab-btn" data-stack="acadly" onclick="switchStackProject('acadly')">
+        <i class="fas fa-graduation-cap"></i> Acadly 🎓
+      </button>
+      <button class="stack-tab-btn" data-stack="visioncane" onclick="switchStackProject('visioncane')">
+        <i class="fas fa-blind"></i> Smart Cane (Team)
+      </button>
+      <button class="stack-tab-btn" data-stack="legalsaathi" onclick="switchStackProject('legalsaathi')">
+        <i class="fas fa-balance-scale"></i> LegalSaathi ⚖️ (Team)
+      </button>
+      <button class="stack-tab-btn" data-stack="deptmgmt" onclick="switchStackProject('deptmgmt')">
+        <i class="fas fa-building-columns"></i> Dept Management (Team)
+      </button>
+    </div>
+
+    <!-- Dynamic Tech Stack Body -->
+    <div class="tech-stack-body" id="techStackBody">
+      <!-- Populated dynamically by openStackModal() / switchStackProject() in main.js -->
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     EXPERIENCE
+════════════════════════════════════════════════════════════ -->
+<section id="experience" class="section" aria-label="Experience">
+  <span class="section__number" aria-hidden="true">04</span>
+  <div class="container">
+    <div class="section__header reveal">
+      <div class="section__label">Where I've Worked</div>
+      <h2 class="section__title">Experience &amp; <em>Leadership</em></h2>
+    </div>
+
+    <div class="exp__grid">
+      <!-- Internship -->
+      <div>
+        <div class="exp__col-title"><i class="fas fa-briefcase"></i>&nbsp; Internship</div>
+        <div class="timeline">
+          <div class="timeline__item reveal">
+            <div class="timeline__period">Apr 2025 — May 2025</div>
+            <div class="timeline__title">Student Intern — App Development</div>
+            <div class="timeline__org">CAPS, CHRIST (Deemed to be University)</div>
+            <div class="timeline__points">
+              <div class="timeline__point">Engineered a Work Log System using Google AppSheet for 8 wings/committees</div>
+              <div class="timeline__point">Saves ~7 hours/week in manual effort across the department</div>
+              <div class="timeline__point">Configured RBAC for 3 user roles; performed full testing &amp; validation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Co-Curricular -->
+      <div>
+        <div class="exp__col-title"><i class="fas fa-users"></i>&nbsp; Co-Curricular</div>
+        <div class="timeline">
+          <div class="timeline__item reveal" data-delay="1">
+            <div class="timeline__period">Jun 2025 — Mar 2026</div>
+            <div class="timeline__title">Member — Tech Center</div>
+            <div class="timeline__org">CAPS, CHRIST University</div>
+            <div class="timeline__points">
+              <div class="timeline__point">100+ volunteer hours testing &amp; developing workflow automation using AppSheet</div>
+            </div>
+          </div>
+          <div class="timeline__item reveal" data-delay="2">
+            <div class="timeline__period">Jun 2025 — Mar 2026</div>
+            <div class="timeline__title">Management Team Member</div>
+            <div class="timeline__org">Entrepreneurship Cell (E-Cell), CHRIST University</div>
+            <div class="timeline__points">
+              <div class="timeline__point">Coordinated planning &amp; execution of 3 entrepreneurship events</div>
+            </div>
+          </div>
+          <div class="timeline__item reveal" data-delay="3">
+            <div class="timeline__period">Oct 2024 — Mar 2025</div>
+            <div class="timeline__title">Media Team Member</div>
+            <div class="timeline__org">VaultVortex, CHRIST University</div>
+            <div class="timeline__points">
+              <div class="timeline__point">Photography &amp; videography coverage for 3 major events</div>
+            </div>
+          </div>
+          <div class="timeline__item reveal" data-delay="4">
+            <div class="timeline__period">Jun 2024 — Mar 2025</div>
+            <div class="timeline__title">Management Team Member</div>
+            <div class="timeline__org">SDG Cell, CHRIST University</div>
+            <div class="timeline__points">
+              <div class="timeline__point">Assisted in 5 sustainability-focused events &amp; PR activities</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     EDUCATION
+════════════════════════════════════════════════════════════ -->
+<section id="education" class="section section--alt" aria-label="Education">
+  <span class="section__number" aria-hidden="true">05</span>
+  <div class="container">
+    <div class="section__header reveal">
+      <div class="section__label">Academic Journey</div>
+      <h2 class="section__title">My <em>Education</em></h2>
+    </div>
+    <div class="edu__grid">
+      <div class="edu-card reveal" data-delay="1">
+        <div class="edu-card__icon"><i class="fas fa-laptop-code"></i></div>
+        <div class="edu-card__degree">Bachelor of Computer Applications</div>
+        <div class="edu-card__school">CHRIST (Deemed to be University), Bengaluru</div>
+        <div class="edu-card__period">Jul 2024 — May 2027 (Expected)</div>
+        <div class="edu-card__score"><i class="fas fa-medal"></i> 69.75% · Till 4th Sem</div>
+      </div>
+      <div class="edu-card reveal" data-delay="2">
+        <div class="edu-card__icon"><i class="fas fa-plane"></i></div>
+        <div class="edu-card__degree">Semester Exchange Programme</div>
+        <div class="edu-card__school">Edge Hill University, United Kingdom</div>
+        <div class="edu-card__period">Jun 2026</div>
+        <div class="edu-card__score"><i class="fas fa-medal"></i> 78%</div>
+      </div>
+      <div class="edu-card reveal" data-delay="3">
+        <div class="edu-card__icon"><i class="fas fa-school"></i></div>
+        <div class="edu-card__degree">Karnataka PUC Board — Class XII</div>
+        <div class="edu-card__school">St. Joseph's Pre-University, Bengaluru</div>
+        <div class="edu-card__period">Apr 2021</div>
+        <div class="edu-card__score"><i class="fas fa-medal"></i> 93.17%</div>
+        <p style="font-size:.8rem;color:var(--muted);margin-top:10px;">CS · Economics · Business Studies · Accountancy</p>
+      </div>
+      <div class="edu-card reveal" data-delay="4">
+        <div class="edu-card__icon"><i class="fas fa-book"></i></div>
+        <div class="edu-card__degree">Karnataka Board — Class X</div>
+        <div class="edu-card__school">St. Catherine High School, Bengaluru</div>
+        <div class="edu-card__period">Apr 2019</div>
+        <div class="edu-card__score"><i class="fas fa-medal"></i> 92.48%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     CERTIFICATIONS & TRAINING
+════════════════════════════════════════════════════════════ -->
+<section id="certifications" class="section" aria-label="Certifications">
+  <span class="section__number" aria-hidden="true">06</span>
+  <div class="container">
+    <div class="section__header reveal">
+      <div class="section__label">Credentials</div>
+      <h2 class="section__title">Certifications &amp; <em>Training</em></h2>
+      <p class="section__subtitle">Verified professional credentials — tap any certificate in the directory to view or redirect to its full certificate image.</p>
+    </div>
+
+    <div class="certs-showcase-wrap reveal">
+      
+      <!-- Left Column: Certificate Carousel -->
+      <div class="certs-carousel-col">
+        <div class="cert-carousel-viewport" id="certCarouselViewport">
+          <div class="cert-carousel-progress" id="certCarouselProgress"></div>
+          <div class="cert-carousel-track" id="certCarouselTrack">
+            
+            <!-- Slide 1: AWS -->
+            <div class="cert-slide active" data-index="0" data-img="assets/certificates/AWS_Academy_Graduate___Cloud_Foundations___Training_Badge_Badge20260802-8-mchz4l_preview.png" data-pdf="assets/certificates/AWS_Academy_Graduate___Cloud_Foundations___Training_Badge_Badge20260802-8-mchz4l.pdf" data-title="AWS Academy Graduate — Cloud Foundations">
+              <div class="cert-slide-img-wrap" onclick="openCertModal('assets/certificates/AWS_Academy_Graduate___Cloud_Foundations___Training_Badge_Badge20260802-8-mchz4l_preview.png', 'AWS Academy Graduate — Cloud Foundations', 'assets/certificates/AWS_Academy_Graduate___Cloud_Foundations___Training_Badge_Badge20260802-8-mchz4l.pdf')">
+                <img src="assets/certificates/AWS_Academy_Graduate___Cloud_Foundations___Training_Badge_Badge20260802-8-mchz4l_preview.png" alt="AWS Academy Graduate — Cloud Foundations" loading="lazy">
+                <div class="cert-slide-overlay">
+                  <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> View Full Certificate</span>
+                </div>
+              </div>
+              <div class="cert-slide-meta">
+                <div class="cert-slide-title">AWS Academy Graduate — Cloud Foundations</div>
+                <div class="cert-slide-issuer"><i class="fab fa-aws"></i> Amazon Web Services (Credly Verified) • Aug 2026</div>
+              </div>
+            </div>
+
+            <!-- Slide 2: Prompt Engineering -->
+            <div class="cert-slide" data-index="1" data-img="assets/certificates/Prompt Engineering_preview.png" data-pdf="assets/certificates/Prompt Engineering.pdf" data-title="Prompt Engineering for ChatGPT">
+              <div class="cert-slide-img-wrap" onclick="openCertModal('assets/certificates/Prompt Engineering_preview.png', 'Prompt Engineering for ChatGPT', 'assets/certificates/Prompt Engineering.pdf')">
+                <img src="assets/certificates/Prompt Engineering_preview.png" alt="Prompt Engineering for ChatGPT" loading="lazy">
+                <div class="cert-slide-overlay">
+                  <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> View Full Certificate</span>
+                </div>
+              </div>
+              <div class="cert-slide-meta">
+                <div class="cert-slide-title">Prompt Engineering for ChatGPT</div>
+                <div class="cert-slide-issuer"><i class="fas fa-robot"></i> Vanderbilt University &amp; Coursera • Nov 2025</div>
+              </div>
+            </div>
+
+            <!-- Slide 3: Data Structures in C++ -->
+            <div class="cert-slide" data-index="2" data-img="assets/certificates/Data Structures in C++.png" data-pdf="" data-title="Data Structures in C++ (Certificate of Excellence)">
+              <div class="cert-slide-img-wrap" onclick="openCertModal('assets/certificates/Data Structures in C++.png', 'Data Structures in C++ (Certificate of Excellence)', '')">
+                <img src="assets/certificates/Data Structures in C++.png" alt="Data Structures in C++ Course" loading="lazy">
+                <div class="cert-slide-overlay">
+                  <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> View Full Certificate</span>
+                </div>
+              </div>
+              <div class="cert-slide-meta">
+                <div class="cert-slide-title">Data Structures in C++ (Certificate of Excellence)</div>
+                <div class="cert-slide-issuer"><i class="fas fa-code"></i> Scaler Topics • 100 Tutorials • 13 Modules • Mar 2025</div>
+              </div>
+            </div>
+
+            <!-- Slide 4: E-Business -->
+            <div class="cert-slide" data-index="3" data-img="assets/certificates/E-Business_preview.png" data-pdf="assets/certificates/E-Business.pdf" data-title="E-Business (Elite NPTEL Certification)">
+              <div class="cert-slide-img-wrap" onclick="openCertModal('assets/certificates/E-Business_preview.png', 'E-Business (Elite NPTEL Certification)', 'assets/certificates/E-Business.pdf')">
+                <img src="assets/certificates/E-Business_preview.png" alt="E-Business Elite Certification" loading="lazy">
+                <div class="cert-slide-overlay">
+                  <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> View Full Certificate</span>
+                </div>
+              </div>
+              <div class="cert-slide-meta">
+                <div class="cert-slide-title">E-Business (Elite NPTEL Certification)</div>
+                <div class="cert-slide-issuer"><i class="fas fa-briefcase"></i> NPTEL • IIT Kharagpur (Govt. of India) • Oct 2025</div>
+              </div>
+            </div>
+
+            <!-- Slide 5: AI Fundamentals -->
+            <div class="cert-slide" data-index="4" data-img="assets/certificates/Ai Fundamentals.png" data-pdf="assets/certificates/Ai fundamentals.pdf" data-title="AI Fundamentals 2026: Safe AI Skills for Work">
+              <div class="cert-slide-img-wrap" onclick="openCertModal('assets/certificates/Ai Fundamentals.png', 'AI Fundamentals 2026: Safe AI Skills for Work', 'assets/certificates/Ai fundamentals.pdf')">
+                <img src="assets/certificates/Ai Fundamentals.png" alt="AI Fundamentals 2026" loading="lazy">
+                <div class="cert-slide-overlay">
+                  <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> View Full Certificate</span>
+                </div>
+              </div>
+              <div class="cert-slide-meta">
+                <div class="cert-slide-title">AI Fundamentals 2026: Safe AI Skills for Work</div>
+                <div class="cert-slide-issuer"><i class="fas fa-brain"></i> Udemy (Michael James, Phil Ebiner) • 7.5 Hours • Jul 2026</div>
+              </div>
+            </div>
+
+            <!-- Slide 6: AI Ethics -->
+            <div class="cert-slide" data-index="5" data-img="assets/certificates/AI Ethics.png" data-pdf="assets/certificates/Ai ethics certification.pdf" data-title="Artificial Intelligence Ethics Certification">
+              <div class="cert-slide-img-wrap" onclick="openCertModal('assets/certificates/AI Ethics.png', 'Artificial Intelligence Ethics Certification', 'assets/certificates/Ai ethics certification.pdf')">
+                <img src="assets/certificates/AI Ethics.png" alt="AI Ethics Certification" loading="lazy">
+                <div class="cert-slide-overlay">
+                  <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> View Full Certificate</span>
+                </div>
+              </div>
+              <div class="cert-slide-meta">
+                <div class="cert-slide-title">Artificial Intelligence Ethics Certification</div>
+                <div class="cert-slide-issuer"><i class="fas fa-scale-balanced"></i> Udemy (Ross Asdourian) • Jul 2026</div>
+              </div>
+            </div>
+
+            <!-- Slide 7: Full Stack Development -->
+            <div class="cert-slide" data-index="6" data-img="assets/certificates/Learning Fullstack Development_preview.png" data-pdf="assets/certificates/Learning Fullstack Development.pdf" data-title="Learning Full Stack Development">
+              <div class="cert-slide-img-wrap" onclick="openCertModal('assets/certificates/Learning Fullstack Development_preview.png', 'Learning Full Stack Development', 'assets/certificates/Learning Fullstack Development.pdf')">
+                <img src="assets/certificates/Learning Fullstack Development_preview.png" alt="Learning Full Stack Development" loading="lazy">
+                <div class="cert-slide-overlay">
+                  <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> View Full Certificate</span>
+                </div>
+              </div>
+              <div class="cert-slide-meta">
+                <div class="cert-slide-title">Learning Full Stack Development</div>
+                <div class="cert-slide-issuer"><i class="fas fa-layer-group"></i> Infosys Springboard • Jan 2025</div>
+              </div>
+            </div>
+
+            <!-- Slide 8: JavaScript -->
+            <div class="cert-slide" data-index="7" data-img="assets/certificates/js javascript_preview.png" data-pdf="assets/certificates/js javascript.pdf" data-title="JavaScript: Getting Started with Programming">
+              <div class="cert-slide-img-wrap" onclick="openCertModal('assets/certificates/js javascript_preview.png', 'JavaScript: Getting Started with Programming', 'assets/certificates/js javascript.pdf')">
+                <img src="assets/certificates/js javascript_preview.png" alt="JavaScript Getting Started" loading="lazy">
+                <div class="cert-slide-overlay">
+                  <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> View Full Certificate</span>
+                </div>
+              </div>
+              <div class="cert-slide-meta">
+                <div class="cert-slide-title">JavaScript: Getting Started with Programming</div>
+                <div class="cert-slide-issuer"><i class="fab fa-js"></i> Infosys Springboard • Sep 2024</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <div class="cert-carousel-controls">
+          <button type="button" class="cert-nav-btn prev" onclick="prevCertSlide()" aria-label="Previous Certificate">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="cert-carousel-dots" id="certCarouselDots">
+            <span class="cert-dot active" onclick="goToCertSlide(0)" title="AWS Academy"></span>
+            <span class="cert-dot" onclick="goToCertSlide(1)" title="Prompt Engineering"></span>
+            <span class="cert-dot" onclick="goToCertSlide(2)" title="Data Structures C++"></span>
+            <span class="cert-dot" onclick="goToCertSlide(3)" title="E-Business NPTEL"></span>
+            <span class="cert-dot" onclick="goToCertSlide(4)" title="AI Fundamentals"></span>
+            <span class="cert-dot" onclick="goToCertSlide(5)" title="AI Ethics"></span>
+            <span class="cert-dot" onclick="goToCertSlide(6)" title="Full Stack Infosys"></span>
+            <span class="cert-dot" onclick="goToCertSlide(7)" title="JavaScript Infosys"></span>
+          </div>
+          <button type="button" class="cert-nav-btn next" onclick="nextCertSlide()" aria-label="Next Certificate">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Certificate Names Directory -->
+      <div class="certs-list-col">
+        <div class="certs-list-header">
+          <div class="certs-list-header__title"><i class="fas fa-award"></i> Certificate Directory (8)</div>
+          <div class="certs-list-header__hint"><i class="fas fa-hand-pointer"></i> Tap to view image &amp; PDF</div>
+        </div>
+
+        <div class="certs__list" id="certsInteractiveList">
+          <!-- 01: AWS -->
+          <div class="cert-item active" data-index="0" data-img="assets/certificates/AWS_Academy_Graduate___Cloud_Foundations___Training_Badge_Badge20260802-8-mchz4l_preview.png" data-pdf="assets/certificates/AWS_Academy_Graduate___Cloud_Foundations___Training_Badge_Badge20260802-8-mchz4l.pdf" onclick="selectCert(0)">
+            <div class="cert-item__num">01</div>
+            <div class="cert-item__icon"><i class="fab fa-aws"></i></div>
+            <div class="cert-item__info">
+              <div class="cert-item__title">AWS Academy Graduate — Cloud Foundations</div>
+              <div class="cert-item__meta"><span>Amazon Web Services</span><span>Credly Verified • Aug 2026</span></div>
+            </div>
+            <div class="cert-item__action" onclick="event.stopPropagation(); openCertModal('assets/certificates/AWS_Academy_Graduate___Cloud_Foundations___Training_Badge_Badge20260802-8-mchz4l_preview.png', 'AWS Academy Graduate — Cloud Foundations', 'assets/certificates/AWS_Academy_Graduate___Cloud_Foundations___Training_Badge_Badge20260802-8-mchz4l.pdf')" title="View Certificate Image &amp; PDF">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+
+          <!-- 02: Prompt Engineering -->
+          <div class="cert-item" data-index="1" data-img="assets/certificates/Prompt Engineering_preview.png" data-pdf="assets/certificates/Prompt Engineering.pdf" onclick="selectCert(1)">
+            <div class="cert-item__num">02</div>
+            <div class="cert-item__icon"><i class="fas fa-robot"></i></div>
+            <div class="cert-item__info">
+              <div class="cert-item__title">Prompt Engineering for ChatGPT</div>
+              <div class="cert-item__meta"><span>Vanderbilt University</span><span>Coursera • Nov 2025</span></div>
+            </div>
+            <div class="cert-item__action" onclick="event.stopPropagation(); openCertModal('assets/certificates/Prompt Engineering_preview.png', 'Prompt Engineering for ChatGPT', 'assets/certificates/Prompt Engineering.pdf')" title="View Certificate Image &amp; PDF">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+
+          <!-- 03: Data Structures C++ -->
+          <div class="cert-item" data-index="2" data-img="assets/certificates/Data Structures in C++.png" data-pdf="" onclick="selectCert(2)">
+            <div class="cert-item__num">03</div>
+            <div class="cert-item__icon"><i class="fas fa-code"></i></div>
+            <div class="cert-item__info">
+              <div class="cert-item__title">Data Structures in C++ (Excellence)</div>
+              <div class="cert-item__meta"><span>Scaler Topics</span><span>13 Modules • Mar 2025</span></div>
+            </div>
+            <div class="cert-item__action" onclick="event.stopPropagation(); openCertModal('assets/certificates/Data Structures in C++.png', 'Data Structures in C++ (Certificate of Excellence)', '')" title="View Certificate Image">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+
+          <!-- 04: E-Business -->
+          <div class="cert-item" data-index="3" data-img="assets/certificates/E-Business_preview.png" data-pdf="assets/certificates/E-Business.pdf" onclick="selectCert(3)">
+            <div class="cert-item__num">04</div>
+            <div class="cert-item__icon"><i class="fas fa-briefcase"></i></div>
+            <div class="cert-item__info">
+              <div class="cert-item__title">E-Business (Elite Certification)</div>
+              <div class="cert-item__meta"><span>NPTEL • IIT Kharagpur</span><span>Elite 61% • Oct 2025</span></div>
+            </div>
+            <div class="cert-item__action" onclick="event.stopPropagation(); openCertModal('assets/certificates/E-Business_preview.png', 'E-Business (Elite NPTEL Certification)', 'assets/certificates/E-Business.pdf')" title="View Certificate Image &amp; PDF">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+
+          <!-- 05: AI Fundamentals -->
+          <div class="cert-item" data-index="4" data-img="assets/certificates/Ai Fundamentals.png" data-pdf="assets/certificates/Ai fundamentals.pdf" onclick="selectCert(4)">
+            <div class="cert-item__num">05</div>
+            <div class="cert-item__icon"><i class="fas fa-brain"></i></div>
+            <div class="cert-item__info">
+              <div class="cert-item__title">AI Fundamentals 2026: Safe AI Skills</div>
+              <div class="cert-item__meta"><span>Udemy</span><span>7.5 Hours • Jul 2026</span></div>
+            </div>
+            <div class="cert-item__action" onclick="event.stopPropagation(); openCertModal('assets/certificates/Ai Fundamentals.png', 'AI Fundamentals 2026: Safe AI Skills for Work', 'assets/certificates/Ai fundamentals.pdf')" title="View Certificate Image &amp; PDF">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+
+          <!-- 06: AI Ethics -->
+          <div class="cert-item" data-index="5" data-img="assets/certificates/AI Ethics.png" data-pdf="assets/certificates/Ai ethics certification.pdf" onclick="selectCert(5)">
+            <div class="cert-item__num">06</div>
+            <div class="cert-item__icon"><i class="fas fa-scale-balanced"></i></div>
+            <div class="cert-item__info">
+              <div class="cert-item__title">Artificial Intelligence Ethics</div>
+              <div class="cert-item__meta"><span>Udemy</span><span>Ross Asdourian • Jul 2026</span></div>
+            </div>
+            <div class="cert-item__action" onclick="event.stopPropagation(); openCertModal('assets/certificates/AI Ethics.png', 'Artificial Intelligence Ethics Certification', 'assets/certificates/Ai ethics certification.pdf')" title="View Certificate Image &amp; PDF">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+
+          <!-- 07: Full Stack Development -->
+          <div class="cert-item" data-index="6" data-img="assets/certificates/Learning Fullstack Development_preview.png" data-pdf="assets/certificates/Learning Fullstack Development.pdf" onclick="selectCert(6)">
+            <div class="cert-item__num">07</div>
+            <div class="cert-item__icon"><i class="fas fa-layer-group"></i></div>
+            <div class="cert-item__info">
+              <div class="cert-item__title">Learning Full Stack Development</div>
+              <div class="cert-item__meta"><span>Infosys Springboard</span><span>Full Stack • Jan 2025</span></div>
+            </div>
+            <div class="cert-item__action" onclick="event.stopPropagation(); openCertModal('assets/certificates/Learning Fullstack Development_preview.png', 'Learning Full Stack Development', 'assets/certificates/Learning Fullstack Development.pdf')" title="View Certificate Image &amp; PDF">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+
+          <!-- 08: JavaScript -->
+          <div class="cert-item" data-index="7" data-img="assets/certificates/js javascript_preview.png" data-pdf="assets/certificates/js javascript.pdf" onclick="selectCert(7)">
+            <div class="cert-item__num">08</div>
+            <div class="cert-item__icon"><i class="fab fa-js"></i></div>
+            <div class="cert-item__info">
+              <div class="cert-item__title">JavaScript: Getting Started</div>
+              <div class="cert-item__meta"><span>Infosys Springboard</span><span>Programming • Sep 2024</span></div>
+            </div>
+            <div class="cert-item__action" onclick="event.stopPropagation(); openCertModal('assets/certificates/js javascript_preview.png', 'JavaScript: Getting Started with Programming', 'assets/certificates/js javascript.pdf')" title="View Certificate Image &amp; PDF">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTIFICATE LIGHTBOX MODAL ────────────────────────────── -->
+<div id="certModal" class="video-modal cert-modal" role="dialog" aria-modal="true" aria-label="Certificate Image Lightbox">
+  <div class="video-modal__backdrop" onclick="closeCertModal()"></div>
+  <div class="video-modal__panel cert-modal__panel">
+    <div class="video-modal__bar">
+      <div class="video-modal__title">
+        <i class="fas fa-certificate" style="color:var(--gold)"></i>
+        <span id="certModalTitle">Certificate View</span>
+      </div>
+      <div class="cert-modal__bar-actions">
+        <a id="certModalDirectLink" href="#" target="_blank" rel="noopener" class="btn btn--outline btn--sm">
+          <i class="fas fa-external-link-alt"></i> <span>Open Full Image</span>
+        </a>
+        <a id="certModalPdfLink" href="#" target="_blank" rel="noopener" class="btn btn--gold btn--sm" style="display:none;">
+          <i class="fas fa-file-pdf"></i> <span>View Original PDF</span>
+        </a>
+        <button type="button" class="video-modal__close" onclick="closeCertModal()" aria-label="Close certificate">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div class="cert-modal__body">
+      <img id="certModalImg" src="" alt="Certificate Image Full Resolution">
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     ACHIEVEMENTS
+════════════════════════════════════════════════════════════ -->
+<section id="achievements" class="section section--alt" aria-label="Achievements">
+  <span class="section__number" aria-hidden="true">07</span>
+  <div class="container">
+    <div class="section__header reveal">
+      <div class="section__label">Milestones</div>
+      <h2 class="section__title">Achievements &amp; <em>Stats</em></h2>
+    </div>
+
+    <div class="achieve__stats">
+      <div class="achieve-stat reveal" data-delay="1">
+        <div class="achieve-stat__icon">🎓</div>
+        <div class="achieve-stat__num"><span data-count="93">0</span>%</div>
+        <div class="achieve-stat__label">Class XII — Karnataka PUC</div>
+      </div>
+      <div class="achieve-stat reveal" data-delay="2">
+        <div class="achieve-stat__icon">🌍</div>
+        <div class="achieve-stat__num"><span data-count="21">0</span></div>
+        <div class="achieve-stat__label">Languages — NLP Model</div>
+      </div>
+      <div class="achieve-stat reveal" data-delay="3">
+        <div class="achieve-stat__icon">💬</div>
+        <div class="achieve-stat__num"><span data-count="5574">0</span></div>
+        <div class="achieve-stat__label">SMS Samples Processed</div>
+      </div>
+      <div class="achieve-stat reveal" data-delay="4">
+        <div class="achieve-stat__icon">⚡</div>
+        <div class="achieve-stat__num"><span data-count="95">0</span>%</div>
+        <div class="achieve-stat__label">F1 Score — Smishing</div>
+      </div>
+      <div class="achieve-stat reveal" data-delay="5">
+        <div class="achieve-stat__icon">⏱️</div>
+        <div class="achieve-stat__num"><span data-count="7">0</span>+</div>
+        <div class="achieve-stat__label">Hrs/Week Saved</div>
+      </div>
+      <div class="achieve-stat reveal" data-delay="6">
+        <div class="achieve-stat__icon">🏆</div>
+        <div class="achieve-stat__num"><span data-count="100">0</span>+</div>
+        <div class="achieve-stat__label">Volunteer Hours</div>
+      </div>
+    </div>
+
+    <div class="achieve__list">
+      <div class="achieve-item reveal" data-delay="1">
+        <div class="achieve-item__icon"><i class="fas fa-brain"></i></div>
+        <div>
+          <div class="achieve-item__title">94.89% Accuracy — Smishing Model</div>
+          <div class="achieve-item__desc">Multilingual NLP across 21 languages, 95.73% F1 using XLM-RoBERTa + XGBoost</div>
+        </div>
+      </div>
+      <div class="achieve-item reveal" data-delay="2">
+        <div class="achieve-item__icon"><i class="fas fa-eye"></i></div>
+        <div>
+          <div class="achieve-item__title">VisionSense AI Smart Cane — 88% Accuracy</div>
+          <div class="achieve-item__desc">Real-time assistive navigation with Gemini AI, 95.73% F1 score</div>
+        </div>
+      </div>
+      <div class="achieve-item reveal" data-delay="3">
+        <div class="achieve-item__icon"><i class="fab fa-aws"></i></div>
+        <div>
+          <div class="achieve-item__title">AWS Academy Graduate</div>
+          <div class="achieve-item__desc">Cloud Foundations Training Badge from Amazon Web Services</div>
+        </div>
+      </div>
+      <div class="achieve-item reveal" data-delay="4">
+        <div class="achieve-item__icon"><i class="fas fa-plane"></i></div>
+        <div>
+          <div class="achieve-item__title">International Exchange — Edge Hill UK</div>
+          <div class="achieve-item__desc">Semester Exchange Programme, United Kingdom — 78% aggregate</div>
+        </div>
+      </div>
+      <div class="achieve-item reveal" data-delay="5">
+        <div class="achieve-item__icon"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <div class="achieve-item__title">Acadly — Offline-First Architecture</div>
+          <div class="achieve-item__desc">Multi-user isolated SQLite via Drift &amp; real-time Google Cloud Firestore sync</div>
+        </div>
+      </div>
+      <div class="achieve-item reveal" data-delay="6">
+        <div class="achieve-item__icon"><i class="fas fa-gem"></i></div>
+        <div>
+          <div class="achieve-item__title">JewelStreet — Production E-Commerce Engine</div>
+          <div class="achieve-item__desc">20+ REST APIs, HMAC-SHA256 Razorpay webhook security &amp; 3-tier RBAC</div>
+        </div>
+      </div>
+      <div class="achieve-item reveal" data-delay="7">
+        <div class="achieve-item__icon"><i class="fas fa-bolt"></i></div>
+        <div>
+          <div class="achieve-item__title">Automation — 7 hrs/week Saved</div>
+          <div class="achieve-item__desc">AppSheet workflow across 8 wings at CAPS CHRIST</div>
+        </div>
+      </div>
+      <div class="achieve-item reveal" data-delay="8">
+        <div class="achieve-item__icon"><i class="fas fa-users"></i></div>
+        <div>
+          <div class="achieve-item__title">E-Cell — 3 Events Coordinated</div>
+          <div class="achieve-item__desc">Entrepreneurship events at CHRIST University, Bengaluru</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     MINI GAME
+════════════════════════════════════════════════════════════ -->
+<section id="game" aria-label="Mini Game">
+  <span class="section__number" aria-hidden="true">08</span>
+  <div class="container">
+    <div class="section__header reveal" style="text-align:center;">
+      <div class="section__label" style="justify-content:center;">Take a Break</div>
+      <h2 class="section__title">🎮 Code <em>Catcher</em></h2>
+      <p class="section__subtitle" style="margin-left:auto;margin-right:auto;">Catch code blocks · Dodge bugs · Level up</p>
+    </div>
+
+    <div class="game__wrap">
+      <div class="game__box reveal">
+        <div class="game__hud">
+          <div class="game__hud-item"><i class="fas fa-star"></i> Score:&nbsp;<span id="gameScore">0</span></div>
+          <div class="game__hud-item">Lives:&nbsp;<span id="gameLives">❤️❤️❤️</span></div>
+          <div class="game__hud-item">Level:&nbsp;<span id="gameLevel">1</span></div>
+        </div>
+        <canvas id="gameCanvas" width="700" height="380" aria-label="Code Catcher game"></canvas>
+      </div>
+      <div class="game__controls">
+        <button id="btnLeft"  class="btn btn--outline btn--sm" style="user-select:none;"><i class="fas fa-arrow-left"></i> Left</button>
+        <button id="btnStart" class="btn btn--gold"><i class="fas fa-play"></i> Start</button>
+        <button id="btnPause" class="btn btn--outline" disabled><i class="fas fa-pause"></i> Pause</button>
+        <button id="btnRight" class="btn btn--outline btn--sm" style="user-select:none;"><i class="fas fa-arrow-right"></i> Right</button>
+      </div>
+      <div class="game__instructions">
+        <span><span class="key">←</span><span class="key">A</span> Move Left</span>
+        <span><span class="key">→</span><span class="key">D</span> Move Right</span>
+        <span style="color:var(--emerald);">⬛ Catch code</span>
+        <span style="color:var(--crimson);">🔴 Dodge bugs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════════════════════ -->
+<section id="contact" class="section section--alt" aria-label="Contact">
+  <span class="section__number" aria-hidden="true">09</span>
+  <div class="container">
+    <div class="section__header reveal" style="text-align:center;">
+      <div class="section__label" style="justify-content:center;">Let's Talk</div>
+      <h2 class="section__title">Get In <em>Touch</em></h2>
+      <p class="section__subtitle" style="margin-left:auto;margin-right:auto;">Open to internships, freelance, and research collaborations.</p>
+    </div>
+
+    <div class="contact__grid">
+      <!-- Left: Info + Globe -->
+      <div class="reveal from-left">
+        <div class="globe-wrap">
+          <canvas id="globe-canvas" aria-label="Interactive 3D globe showing Bengaluru location"></canvas>
+          <div class="globe-hud-badge">
+            <span class="beacon-pulse"></span>
+            <span>BASE STATION: BENGALURU, INDIA [12.97°N, 77.59°E]</span>
+          </div>
+          <div class="globe-hint"><i class="fas fa-arrows-alt"></i> Click &amp; drag to rotate earth</div>
+        </div>
+
+        <h3 class="contact__info-title">Let's Build Something <em style="font-style:normal;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Great</em></h3>
+        <p class="contact__info-desc">Whether it's an AI solution, a full-stack app, or an IoT system — I'm ready to bring ideas to life.</p>
+
+        <div class="contact__details">
+          <div class="contact__detail">
+            <div class="contact__detail-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="contact__detail-label">Email</div>
+              <div class="contact__detail-val"><a href="mailto:deevyanshu@gmail.com" id="emailLink">deevyanshu@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact__detail">
+            <div class="contact__detail-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <div class="contact__detail-label">Phone</div>
+              <div class="contact__detail-val"><a href="tel:+916362765415" id="phoneLink">+91 6362765415</a></div>
+            </div>
+          </div>
+          <div class="contact__detail">
+            <div class="contact__detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="contact__detail-label">Location</div>
+              <div class="contact__detail-val"><span>Bengaluru, Karnataka, India</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="socials">
+          <a href="https://github.com/sahudev06"           target="_blank" rel="noopener" class="social-link" id="githubLink"   aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/deevyanshu-sahu" target="_blank" rel="noopener" class="social-link" id="linkedinLink" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:deevyanshu@gmail.com"             class="social-link"             id="emailIconLink" aria-label="Email" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="reveal">
+        <div class="contact__form-card">
+          <div class="contact__form-title">Send a Message</div>
+          <form id="contactForm" novalidate autocomplete="off">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">Your Name *</label>
+                <input type="text" id="contactName" name="from_name" placeholder="John Doe" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Your Email *</label>
+                <input type="email" id="contactEmail" name="from_email" placeholder="john@example.com" required autocomplete="email" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <input type="text" id="contactSubject" name="subject" placeholder="Project / Internship / Collaboration" />
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message *</label>
+              <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button type="submit" id="submitBtn">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__logo">DS</div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="#about"        class="footer__nav-link">About</a>
+        <a href="#skills"       class="footer__nav-link">Skills</a>
+        <a href="#projects"     class="footer__nav-link">Projects</a>
+        <a href="#team"         class="footer__nav-link">Team Projects</a>
+        <a href="#experience"   class="footer__nav-link">Experience</a>
+        <a href="#education"    class="footer__nav-link">Education</a>
+        <a href="#achievements" class="footer__nav-link">Achievements</a>
+        <a href="#game"         class="footer__nav-link">Game</a>
+        <a href="#contact"      class="footer__nav-link">Contact</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 <span>Deevyanshu Sahu</span>. Crafted with precision &amp; passion.</p>
+      <p class="footer__tagline">// Building the future, one commit at a time</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/three-scene.js"></script>
+<script src="js/game.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>
