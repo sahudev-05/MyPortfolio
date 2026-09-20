@@ -251,6 +251,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 body:hover #cursor { opacity: 1; }
 
+@media (hover: none) and (pointer: coarse) {
+  #cursor, #cursor-follower {
+    display: none !important;
+  }
+}
+
 /* ============================================================
    LOADING SCREEN — Luxury Gold Line Draw
    ============================================================ */
@@ -1271,6 +1277,7 @@ body:hover #cursor { opacity: 1; }
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
   margin-top: auto;
   padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -1528,11 +1535,19 @@ body:hover #cursor { opacity: 1; }
   }
   .project-card__media,
   .team-project-card__media {
-    height: 260px;
-    min-height: 260px;
-    max-height: 260px;
+    height: 280px;
+    min-height: 280px;
+    max-height: 320px;
     border-right: none;
     border-bottom: 1px solid var(--border);
+  }
+  .project-direct-preview {
+    min-height: 280px;
+    height: 100%;
+  }
+  .direct-preview__frame-wrap {
+    min-height: calc(280px - 38px);
+    height: calc(100% - 38px);
   }
   .project-card__body,
   .team-project-card__body {
@@ -2215,7 +2230,7 @@ body:hover #cursor { opacity: 1; }
 .game__hud-item { display: flex; align-items: center; gap: 8px; }
 .game__hud-item i { color: var(--gold); }
 #gameScore, #gameLives, #gameLevel { color: var(--gold); font-weight: 700; }
-#gameCanvas { display: block; margin: 0 auto; }
+#gameCanvas { display: block; margin: 0 auto; max-width: 100%; height: auto; }
 .game__controls { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
 .game__instructions {
   margin-top: 14px;
@@ -4661,5 +4676,92 @@ a.direct-preview__url:hover {
   color: var(--white);
 }
 
-
-
+/* ============================================================
+   MOBILE PHONE OPTIMIZATIONS (<= 540px)
+   ============================================================ */
+@media (max-width: 540px) {
+  .container {
+    padding: 0 16px;
+  }
+  :root {
+    --section-pad: 80px 0;
+  }
+  .section__header {
+    margin-bottom: 44px;
+  }
+  .hero__title {
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
+  }
+  .hero__desc {
+    font-size: 0.95rem;
+  }
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .about__cutout-wrap {
+    max-width: 320px;
+    min-height: 310px;
+  }
+  .about__cutout-img {
+    max-width: 290px;
+  }
+  .about__cyber-halo {
+    width: 250px;
+    height: 250px;
+  }
+  .about-3d-badge {
+    font-size: 0.62rem;
+    padding: 4px 8px;
+    letter-spacing: 0.3px;
+  }
+  .cert-carousel-viewport {
+    height: 360px;
+  }
+  .cert-slide-meta {
+    padding: 10px 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .cert-slide-title {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+  .cert-slide-issuer {
+    font-size: 0.7rem;
+    max-width: 100%;
+  }
+  .contact__form-card {
+    padding: 24px 16px;
+  }
+  .tech-stack-modal__panel {
+    width: 96vw;
+    max-height: 92vh;
+  }
+  .tech-stack-body {
+    padding: 14px;
+  }
+  .direct-preview__bar {
+    padding: 0 8px;
+    gap: 6px;
+  }
+  .direct-preview__url {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+  }
+  .deployed-link-chip {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+  }
+  .dept-facilities-grid {
+    grid-template-columns: 1fr;
+  }
+  .dept-telemetry-row {
+    grid-template-columns: 1fr;
+  }
+}
