@@ -404,13 +404,21 @@ body:hover #cursor { opacity: 1; }
    ============================================================ */
 #hero {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 100px 0 0;
-  gap: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.hero__inner-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  align-items: center;
+  width: 100%;
 }
 
 /* Three.js canvas fills right half */
@@ -609,11 +617,13 @@ body:hover #cursor { opacity: 1; }
 }
 
 @media (max-width: 960px) {
-  #hero { grid-template-columns: 1fr; padding: 120px 0 80px; }
+  #hero { padding: 0; }
+  .hero__inner-grid { grid-template-columns: 1fr; min-height: auto; padding: 120px 0 60px; }
   #hero::after { background: linear-gradient(180deg, rgba(2,4,8,0.5) 0%, var(--bg) 70%); }
-  #hero-3d-canvas { width: 100%; height: 50vh; top: auto; bottom: 0; }
-  .hero__content { padding-bottom: 40px; }
-  .hero__name { font-size: clamp(3.5rem, 12vw, 6rem); }
+  #hero-3d-canvas { width: 100%; height: 40vh; top: auto; bottom: 0; opacity: 0.6; }
+  .hero__content { padding-bottom: 24px; }
+  .hero__name { font-size: clamp(2.8rem, 10vw, 4.8rem); }
+  .hero__3d-side { height: 160px; margin-top: 20px; }
   .hero__badge { display: none; }
 }
 
@@ -4677,6 +4687,319 @@ a.direct-preview__url:hover {
 }
 
 /* ============================================================
+   SMART CANE HARDWARE CONSOLE & BLUEPRINT DEMO
+   ============================================================ */
+.hardware-console {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: #02060f;
+  position: relative;
+  overflow: hidden;
+}
+
+.hardware-console__nav {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: rgba(7, 13, 26, 0.95);
+  padding: 6px;
+  gap: 6px;
+  z-index: 2;
+}
+
+.console-tab-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 12px;
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.console-tab-btn:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.console-tab-btn.active {
+  color: var(--gold);
+  background: rgba(201, 162, 39, 0.12);
+  border-color: rgba(201, 162, 39, 0.35);
+  font-weight: 600;
+  box-shadow: inset 0 0 12px rgba(201, 162, 39, 0.08);
+}
+
+.hardware-console__view {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 45px);
+  width: 100%;
+  position: relative;
+  min-height: 0;
+}
+
+.cane-blueprint-container {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  background: #ffffff; /* Seamlessly matches diagram white background */
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.cane-blueprint-img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  background: #ffffff;
+  display: block;
+  transition: transform 0.4s var(--ease);
+}
+
+.cane-blueprint-container:hover .cane-blueprint-img {
+  transform: scale(1.02);
+}
+
+.cane-blueprint-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 15, 0.45);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.cane-blueprint-container:hover .cane-blueprint-overlay {
+  opacity: 1;
+}
+
+.blueprint-zoom-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(7, 13, 26, 0.95);
+  color: var(--gold);
+  border: 1px solid var(--border-bright);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  transform: translateY(6px);
+  transition: transform 0.3s ease;
+}
+
+.cane-blueprint-container:hover .blueprint-zoom-badge {
+  transform: translateY(0);
+}
+
+.hardware-telemetry__chips--compact {
+  padding: 8px 14px;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tele-chip--interactive {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tele-chip--interactive:hover {
+  border-color: var(--cyan);
+  background: rgba(0, 240, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ── CANE BLUEPRINT LIGHTBOX MODAL ── */
+.cane-blueprint-modal__panel {
+  max-width: 950px;
+  width: 92vw;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #060c18;
+  border: 1px solid var(--border-bright);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 240, 255, 0.15);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.blueprint-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.blueprint-full-link {
+  padding: 5px 14px;
+  font-size: 0.74rem;
+  border-radius: 4px;
+}
+
+.cane-blueprint-modal__body {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(92vh - 60px);
+}
+
+.cane-blueprint-modal__viewer {
+  background: #ffffff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.cane-blueprint-full-img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 4px;
+}
+
+.cane-blueprint-modal__footer {
+  padding: 20px;
+  background: rgba(10, 18, 34, 0.8);
+}
+
+.blueprint-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.blueprint-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(7, 13, 26, 0.7);
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  border-radius: 6px;
+}
+
+.blueprint-feature-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.blueprint-feature-text strong {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.blueprint-feature-text span {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.4;
+  display: block;
+}
+
+/* ============================================================
+   TABLET & TOUCH OPTIMIZATIONS (<= 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .projects__filter {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    scrollbar-width: none;
+    padding-bottom: 6px;
+    margin-bottom: 36px;
+    gap: 6px;
+  }
+  .projects__filter::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-btn {
+    padding: 10px 18px;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+  .project-card,
+  .team-project-card {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+  .project-card__media {
+    height: 260px !important;
+    min-height: 260px !important;
+  }
+  .team-project-card__media {
+    height: 380px !important;
+    min-height: 380px !important;
+  }
+  .cane-blueprint-img {
+    height: 100% !important;
+    max-height: none !important;
+  }
+  .hardware-console__view {
+    height: calc(100% - 40px);
+  }
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* ============================================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ============================================================ */
+@media (hover: none) and (pointer: coarse) {
+  #cursor, #cursor-follower {
+    display: none !important;
+  }
+  .cane-blueprint-overlay {
+    opacity: 1;
+    background: linear-gradient(0deg, rgba(2, 6, 15, 0.75) 0%, transparent 60%);
+    align-items: flex-end;
+    padding-bottom: 10px;
+  }
+  .blueprint-zoom-badge {
+    transform: translateY(0);
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+}
+
+/* ============================================================
    MOBILE PHONE OPTIMIZATIONS (<= 540px)
    ============================================================ */
 @media (max-width: 540px) {
@@ -4684,79 +5007,226 @@ a.direct-preview__url:hover {
     padding: 0 16px;
   }
   :root {
-    --section-pad: 80px 0;
+    --section-pad: 70px 0;
   }
   .section__header {
-    margin-bottom: 44px;
+    margin-bottom: 36px;
   }
-  .hero__title {
-    font-size: clamp(2.2rem, 9vw, 3.4rem);
+  .section__title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  .section__number {
+    font-size: 5rem;
+    top: 40px;
+    opacity: 0.3;
+  }
+  .hero__inner-grid {
+    padding-top: 100px;
+    padding-bottom: 40px;
+    min-height: auto;
+  }
+  .hero__name {
+    font-size: clamp(2.2rem, 9.5vw, 3.2rem) !important;
+    word-break: break-word;
+    letter-spacing: -1px;
+  }
+  .hero__role-bar {
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 16px 0;
   }
   .hero__desc {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+    padding-left: 14px;
   }
   .hero__actions {
     flex-direction: column;
     width: 100%;
+    gap: 12px;
+    margin-bottom: 36px;
   }
   .hero__actions .btn {
     width: 100%;
     justify-content: center;
+    padding: 14px 20px;
+    font-size: 0.85rem;
+  }
+  .hero__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding-top: 20px;
+  }
+  .hero__stat {
+    padding: 0 0 10px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero__stat:nth-child(3),
+  .hero__stat:nth-child(4) {
+    border-bottom: none;
+  }
+  .hero__stat:last-child {
+    padding-left: 0;
+  }
+  .hero__stat-num {
+    font-size: 2rem;
+  }
+  .hero__3d-side {
+    height: 100px;
+    margin-top: 10px;
+  }
+  .about__grid {
+    gap: 36px;
   }
   .about__cutout-wrap {
-    max-width: 320px;
-    min-height: 310px;
+    max-width: 270px;
+    min-height: 250px;
   }
   .about__cutout-img {
-    max-width: 290px;
+    max-width: 250px;
   }
   .about__cyber-halo {
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
   }
   .about-3d-badge {
-    font-size: 0.62rem;
-    padding: 4px 8px;
-    letter-spacing: 0.3px;
+    font-size: 0.6rem;
+    padding: 4px 7px;
+    letter-spacing: 0.2px;
+  }
+  .skills__cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .skill-card {
+    padding: 20px 16px;
+  }
+  .project-card__body,
+  .team-project-card__body {
+    padding: 18px 14px;
+  }
+  .project-card__title {
+    font-size: 1.3rem;
+  }
+  .project-card__desc {
+    font-size: 0.85rem;
+  }
+  .project-card__quick-stats {
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 6px;
+    padding: 6px 10px;
+  }
+  .stat-pill-divider {
+    display: none;
+  }
+  .project-card__action-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .project-card__action-left,
+  .project-card__quick-links {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .project-card__action-left .btn,
+  .project-card__quick-links .btn {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+  .console-tab-btn {
+    font-size: 0.65rem;
+    padding: 6px 8px;
+    gap: 4px;
+  }
+  .team-project-card__media {
+    height: 350px !important;
+    min-height: 350px !important;
+  }
+  .cane-blueprint-container {
+    min-height: 260px;
+    height: 100%;
+    background: #ffffff;
+    padding: 4px;
+  }
+  .cane-blueprint-img {
+    height: 100%;
+    max-height: none;
+    object-fit: contain;
+    background: #ffffff;
+  }
+  .cane-blueprint-modal__panel {
+    width: 96vw;
+    max-height: 94vh;
+  }
+  .cane-blueprint-modal__viewer {
+    padding: 10px;
+  }
+  .cane-blueprint-modal__footer {
+    padding: 14px;
+  }
+  .blueprint-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
   .cert-carousel-viewport {
-    height: 360px;
+    height: 320px;
   }
   .cert-slide-meta {
-    padding: 10px 14px;
+    padding: 10px 12px;
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
   }
   .cert-slide-title {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     max-width: 100%;
   }
   .cert-slide-issuer {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     max-width: 100%;
   }
   .contact__form-card {
-    padding: 24px 16px;
+    padding: 20px 14px;
   }
   .tech-stack-modal__panel {
     width: 96vw;
-    max-height: 92vh;
+    max-height: 94vh;
   }
   .tech-stack-body {
-    padding: 14px;
+    padding: 12px;
+  }
+  .tech-stack-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .tech-stack-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .stack-tab-btn {
+    flex-shrink: 0;
   }
   .direct-preview__bar {
     padding: 0 8px;
     gap: 6px;
   }
   .direct-preview__url {
-    font-size: 0.65rem;
-    padding: 2px 8px;
+    font-size: 0.62rem;
+    padding: 2px 6px;
   }
   .deployed-link-chip {
-    font-size: 0.65rem;
-    padding: 2px 8px;
+    font-size: 0.62rem;
+    padding: 2px 6px;
   }
   .dept-facilities-grid {
     grid-template-columns: 1fr;
@@ -4764,4 +5234,14 @@ a.direct-preview__url:hover {
   .dept-telemetry-row {
     grid-template-columns: 1fr;
   }
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .footer__nav {
+    gap: 10px 16px;
+  }
 }
+

@@ -81,7 +81,7 @@
   <canvas id="hero-3d-canvas" aria-hidden="true"></canvas>
 
   <!-- LEFT: Content -->
-  <div class="container" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;align-items:center;">
+  <div class="container hero__inner-grid">
     <div class="hero__content">
       <div class="hero__eyebrow">
         <span class="hero__eyebrow-line"></span>
@@ -133,7 +133,7 @@
     </div>
 
     <!-- RIGHT: floating badges over the 3D canvas -->
-    <div class="hero__3d-side" style="position:relative;height:100vh;">
+    <div class="hero__3d-side">
       <div class="hero__badge hero__badge--1">
         <i class="fas fa-brain"></i> AI / ML Engineer
       </div>
@@ -685,6 +685,9 @@
               <button type="button" class="btn btn--cyan-glow btn--sm project-stack-btn" onclick="openStackModal('visionsense')" title="View Full Technical Architecture & Stack">
                 <i class="fas fa-layer-group"></i> <span>View Stack</span>
               </button>
+              <button type="button" class="btn btn--outline btn--sm project-cane-demo-btn" onclick="openCaneDemoModal()" title="View Smart Cane Hardware Demo & Schematic">
+                <i class="fas fa-blind"></i> <span>Cane Demo</span>
+              </button>
             </div>
             <div class="project-card__quick-links">
               <a href="https://vision-sense-ai.vercel.app/" target="_blank" rel="noopener" class="btn btn--gold btn--sm" id="visionSenseLiveBtn">
@@ -941,46 +944,80 @@
       <!-- COLLABORATIVE PROJECT 1: VisionSense AI Smart Cane -->
       <article class="project-card team-project-card reveal" id="projectVisionCareTeam">
         <div class="project-card__media team-project-card__media">
-          <div class="hardware-telemetry">
-            <div class="hardware-telemetry__bar">
-              <span class="hardware-telemetry__badge"><i class="fas fa-microchip"></i> ESP32-CAM Architecture</span>
-              <span class="hardware-telemetry__status"><span class="status-pulse"></span> BLE Online</span>
+          <div class="hardware-console">
+            <!-- Console View Switcher Tabs -->
+            <div class="hardware-console__nav" role="tablist" aria-label="Smart Cane Display Modes">
+              <button type="button" class="console-tab-btn active" id="caneTabSchematic" onclick="switchCaneView('schematic')" role="tab" aria-selected="true" aria-controls="caneViewSchematic">
+                <i class="fas fa-diagram-project"></i> <span>Hardware Demo &amp; Blueprint</span>
+              </button>
+              <button type="button" class="console-tab-btn" id="caneTabRadar" onclick="switchCaneView('radar')" role="tab" aria-selected="false" aria-controls="caneViewRadar">
+                <i class="fas fa-satellite-dish"></i> <span>Live BLE Radar</span>
+              </button>
             </div>
-            
-            <div class="hardware-telemetry__radar">
-              <div class="radar-circle circle-1"></div>
-              <div class="radar-circle circle-2"></div>
-              <div class="radar-circle circle-3"></div>
-              <div class="radar-crosshair-x"></div>
-              <div class="radar-crosshair-y"></div>
-              <div class="radar-sweep"></div>
+
+            <!-- VIEW 1: Schematic Blueprint Demo (Default Active View) -->
+            <div class="hardware-console__view hardware-console__view--schematic active" id="caneViewSchematic" role="tabpanel">
+              <div class="hardware-telemetry__bar">
+                <span class="hardware-telemetry__badge"><i class="fas fa-microchip"></i> ESP32-CAM Architecture</span>
+                <span class="hardware-telemetry__status"><span class="status-pulse"></span> Prototype Verified</span>
+              </div>
+
+              <div class="cane-blueprint-container" onclick="openCaneDemoModal()" title="Click to View Full High-Resolution Blueprint">
+                <img src="assets/images/visionsense_smart_cane.jpg" alt="VisionSense AI Smart Accessibility Cane Hardware Architecture &amp; Demo Blueprint" class="cane-blueprint-img" loading="lazy" />
+                <div class="cane-blueprint-overlay">
+                  <span class="blueprint-zoom-badge"><i class="fas fa-search-plus"></i> View Full Blueprint</span>
+                </div>
+              </div>
+
+              <div class="hardware-telemetry__chips hardware-telemetry__chips--compact">
+                <button type="button" class="tele-chip tele-chip--interactive" onclick="openCaneDemoModal()" title="ESP32-CAM (OV2640) Module"><i class="fas fa-camera"></i> <span>ESP32-CAM <strong>OV2640</strong></span></button>
+                <button type="button" class="tele-chip tele-chip--interactive" onclick="openCaneDemoModal()" title="6x Ultrasonic 360° Array"><i class="fas fa-wave-square"></i> <span>Array: <strong>6x Ultrasonic</strong></span></button>
+                <button type="button" class="tele-chip tele-chip--interactive" onclick="openCaneDemoModal()" title="Bottom Tip Water Hazard Sensor"><i class="fas fa-water"></i> <span>Sensor: <strong>Water Tip</strong></span></button>
+              </div>
+            </div>
+
+            <!-- VIEW 2: Realtime Radar Telemetry Sweep -->
+            <div class="hardware-console__view hardware-console__view--radar" id="caneViewRadar" role="tabpanel" style="display:none;">
+              <div class="hardware-telemetry__bar">
+                <span class="hardware-telemetry__badge"><i class="fas fa-broadcast-tower"></i> Realtime Transceiver</span>
+                <span class="hardware-telemetry__status"><span class="status-pulse"></span> BLE Online</span>
+              </div>
               
-              <div class="radar-cane-icon" title="Cane Transceiver Core">
-                <i class="fas fa-blind"></i>
+              <div class="hardware-telemetry__radar">
+                <div class="radar-circle circle-1"></div>
+                <div class="radar-circle circle-2"></div>
+                <div class="radar-circle circle-3"></div>
+                <div class="radar-crosshair-x"></div>
+                <div class="radar-crosshair-y"></div>
+                <div class="radar-sweep"></div>
+                
+                <div class="radar-cane-icon" title="Cane Transceiver Core">
+                  <i class="fas fa-blind"></i>
+                </div>
+
+                <!-- Sensor Pings -->
+                <div class="radar-ping ping-front" title="Front Obstacle: 1.2m">
+                  <span class="ping-dot"></span>
+                  <span class="ping-label">Front: 1.2m</span>
+                </div>
+                <div class="radar-ping ping-left" title="Left Clearance: 0.8m">
+                  <span class="ping-dot"></span>
+                  <span class="ping-label">Left: 0.8m</span>
+                </div>
+                <div class="radar-ping ping-right" title="Right Clearance: Safe">
+                  <span class="ping-dot ping-dot--green"></span>
+                  <span class="ping-label">Right: Safe</span>
+                </div>
+                <div class="radar-ping ping-water" title="Surface Moisture Sensor: Dry">
+                  <span class="ping-dot ping-dot--cyan"></span>
+                  <span class="ping-label">Ground: Dry</span>
+                </div>
               </div>
 
-              <!-- Sensor Pings -->
-              <div class="radar-ping ping-front" title="Front Obstacle: 1.2m">
-                <span class="ping-dot"></span>
-                <span class="ping-label">Front: 1.2m</span>
+              <div class="hardware-telemetry__chips">
+                <div class="tele-chip"><i class="fas fa-satellite-dish"></i> Ranging: <strong>2cm–400cm</strong></div>
+                <div class="tele-chip"><i class="fas fa-bolt"></i> Latency: <strong>&lt;200ms BLE</strong></div>
               </div>
-              <div class="radar-ping ping-left" title="Left Clearance: 0.8m">
-                <span class="ping-dot"></span>
-                <span class="ping-label">Left: 0.8m</span>
-              </div>
-              <div class="radar-ping ping-right" title="Right Clearance: Safe">
-                <span class="ping-dot ping-dot--green"></span>
-                <span class="ping-label">Right: Safe</span>
-              </div>
-              <div class="radar-ping ping-water" title="Surface Moisture Sensor: Dry">
-                <span class="ping-dot ping-dot--cyan"></span>
-                <span class="ping-label">Ground: Dry</span>
-              </div>
-            </div>
-
-            <div class="hardware-telemetry__chips">
-              <div class="tele-chip"><i class="fas fa-camera"></i> Camera Setup: <strong>ESP32-CAM Stream</strong></div>
-              <div class="tele-chip"><i class="fas fa-wave-square"></i> Sensor Array: <strong>6x Ultrasonic</strong></div>
             </div>
           </div>
         </div>
@@ -1043,6 +1080,9 @@
             <div class="project-card__action-left">
               <button type="button" class="btn btn--cyan-glow btn--sm project-stack-btn" onclick="openStackModal('visioncane')" title="View Full Technical Architecture & Stack">
                 <i class="fas fa-layer-group"></i> <span>View Stack</span>
+              </button>
+              <button type="button" class="btn btn--outline btn--sm project-cane-demo-btn" onclick="openCaneDemoModal()" title="View High-Resolution Smart Cane Demo Blueprint">
+                <i class="fas fa-diagram-project"></i> <span>Demo Blueprint</span>
               </button>
             </div>
             <div class="project-card__quick-links">
@@ -1384,6 +1424,64 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- ── VISION SENSE AI SMART CANE BLUEPRINT & DEMO LIGHTBOX ── -->
+<div id="caneBlueprintModal" class="video-modal cane-blueprint-modal" role="dialog" aria-modal="true" aria-label="VisionSense AI Smart Cane Architecture and Hardware Demo Blueprint">
+  <div class="video-modal__backdrop" onclick="closeCaneDemoModal()"></div>
+  <div class="video-modal__panel cane-blueprint-modal__panel">
+    <div class="video-modal__bar">
+      <div class="video-modal__title">
+        <i class="fas fa-blind" style="color:var(--gold)"></i>
+        <span>VisionSense AI — Smart Cane Hardware Architecture &amp; Demo</span>
+      </div>
+      <div class="blueprint-modal-actions">
+        <a href="assets/images/visionsense_smart_cane.jpg" target="_blank" rel="noopener" class="btn btn--gold btn--sm blueprint-full-link" title="Open Image in High-Resolution Tab">
+          <i class="fas fa-external-link-alt"></i> <span>Full Resolution</span>
+        </a>
+        <button class="video-modal__close" onclick="closeCaneDemoModal()" aria-label="Close demo blueprint modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div class="cane-blueprint-modal__body">
+      <div class="cane-blueprint-modal__viewer">
+        <img src="assets/images/visionsense_smart_cane.jpg" alt="VisionSense AI Smart Accessibility Cane Hardware Diagram" class="cane-blueprint-full-img" />
+      </div>
+      <div class="cane-blueprint-modal__footer">
+        <div class="blueprint-feature-grid">
+          <div class="blueprint-feature-item">
+            <div class="blueprint-feature-icon"><i class="fas fa-microchip"></i></div>
+            <div class="blueprint-feature-text">
+              <strong>ESP32-CAM (OV2640)</strong>
+              <span>Forward camera stream for Gemini AI scene &amp; object reasoning</span>
+            </div>
+          </div>
+          <div class="blueprint-feature-item">
+            <div class="blueprint-feature-icon"><i class="fas fa-broadcast-tower"></i></div>
+            <div class="blueprint-feature-text">
+              <strong>6x Ultrasonic Array</strong>
+              <span>360° obstacle ranging (2cm–400cm) covering torso, head &amp; ground</span>
+            </div>
+          </div>
+          <div class="blueprint-feature-item">
+            <div class="blueprint-feature-icon"><i class="fas fa-water"></i></div>
+            <div class="blueprint-feature-text">
+              <strong>Water Hazard Sensor</strong>
+              <span>Conductive bottom tip detects puddles, mud &amp; wet surfaces</span>
+            </div>
+          </div>
+          <div class="blueprint-feature-item">
+            <div class="blueprint-feature-icon"><i class="fas fa-mobile-screen"></i></div>
+            <div class="blueprint-feature-text">
+              <strong>Smartphone BLE App</strong>
+              <span>Flutter companion app handles Gemini voice assistant &amp; GPS SOS</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

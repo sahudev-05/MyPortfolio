@@ -971,6 +971,18 @@ const projectTechStacks = {
     ],
     sections: [
       {
+        title: 'Hardware Schematic & Physical Demo Architecture',
+        icon: 'fas fa-diagram-project',
+        items: [
+          '<strong>ESP32-CAM (OV2640) Module:</strong> Forward-facing camera streaming 15–20 FPS video for real-time Gemini AI multimodal vision reasoning.',
+          '<strong>6x Ultrasonic Transducers (360° Coverage):</strong> 1 front, 2 side (left/right), 1 back, and 2 bottom (left/right) sensors detecting head, torso, and drop-off hazards.',
+          '<strong>Electronics Enclosure:</strong> Houses ESP32 DevKit V1 main controller and rechargeable Li-ion power cell inside a shock-resistant casing.',
+          '<strong>Ground Water Sensor:</strong> Conductive sensor at bottom tip detecting puddles, mud, and slick surfaces in &lt;10ms.',
+          '<strong>Companion Smartphone Architecture:</strong> Offloads mic, GPS, speaker, and audio amp to the phone via low-energy BLE GATT synchronization.',
+          '<a href="javascript:void(0)" onclick="closeStackModal(); openCaneDemoModal();" class="btn btn--gold btn--sm" style="display:inline-flex;margin-top:8px;padding:6px 14px;font-size:0.75rem;"><i class="fas fa-search-plus"></i> View Full Hardware Blueprint</a>'
+        ]
+      },
+      {
         title: 'My Role & Embedded Contribution',
         icon: 'fas fa-microchip',
         items: [
@@ -1263,12 +1275,50 @@ function switchStackProject(projectKey) {
   `;
 }
 
+// ── SMART CANE CONSOLE VIEW SWITCHER ─────────────────────────
+function switchCaneView(view) {
+  const schemView = document.getElementById('caneViewSchematic');
+  const radarView = document.getElementById('caneViewRadar');
+  const schemTab  = document.getElementById('caneTabSchematic');
+  const radarTab  = document.getElementById('caneTabRadar');
+
+  if (view === 'schematic') {
+    if (schemView) { schemView.style.display = ''; schemView.classList.add('active'); }
+    if (radarView) { radarView.style.display = 'none'; radarView.classList.remove('active'); }
+    if (schemTab)  { schemTab.classList.add('active'); schemTab.setAttribute('aria-selected', 'true'); }
+    if (radarTab)  { radarTab.classList.remove('active'); radarTab.setAttribute('aria-selected', 'false'); }
+  } else if (view === 'radar') {
+    if (radarView) { radarView.style.display = 'flex'; radarView.classList.add('active'); }
+    if (schemView) { schemView.style.display = 'none'; schemView.classList.remove('active'); }
+    if (radarTab)  { radarTab.classList.add('active'); radarTab.setAttribute('aria-selected', 'true'); }
+    if (schemTab)  { schemTab.classList.remove('active'); schemTab.setAttribute('aria-selected', 'false'); }
+  }
+}
+
+// ── SMART CANE BLUEPRINT LIGHTBOX MODAL ──────────────────────
+function openCaneDemoModal() {
+  const modal = document.getElementById('caneBlueprintModal');
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeCaneDemoModal() {
+  const modal = document.getElementById('caneBlueprintModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeSolarModal();
     closeAcadlyModal();
     closeCertModal();
     closeStackModal();
+    closeCaneDemoModal();
   }
 });
 
